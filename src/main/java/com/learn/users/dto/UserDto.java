@@ -11,7 +11,6 @@ import java.util.UUID;
 @ToString
 @Getter @Setter
 public class UserDto implements Serializable {
-
     private UUID userId;
     @NotNull
     private String name;

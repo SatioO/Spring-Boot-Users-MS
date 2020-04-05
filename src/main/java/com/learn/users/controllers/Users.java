@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
+import java.util.Collection;
 import java.util.UUID;
 
 @RestController
@@ -21,7 +21,7 @@ public class Users {
     }
 
     @GetMapping
-    public List<UserDto> getUsers() {
+    public Collection<UserDto> getUsers() {
         return UserService.getAllUsers();
     }
 
