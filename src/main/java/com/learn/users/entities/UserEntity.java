@@ -2,26 +2,23 @@ package com.learn.users.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.UUID;
 
-@Entity @Getter @Setter
+@Entity
 @Table(name="users")
+@Getter @Setter
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = 8634140154302985540L;
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     @Column(nullable = false, length = 50)
     private String name;
     @Column(nullable = false, length = 50)
     private String gender;
     @Column(nullable = false, unique = true)
-    private UUID userId;
+    private String userId;
 }
