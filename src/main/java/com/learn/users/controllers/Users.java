@@ -1,33 +1,32 @@
 package com.learn.users.controllers;
 
 import com.learn.users.dto.UserDto;
-import com.learn.users.models.User;
-import com.learn.users.services.UserService;
+import com.learn.users.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("users")
 public class Users {
     @Autowired
-    private UserService userService;
+    private IUserService UserService;
 
     @GetMapping(path = "/{id}")
-    public User getUser(@PathVariable UUID id) {
-        return userService.getUserById(id);
+    public UserDto getUser(@PathVariable UUID id) {
+        return UserService.getUserById(id);
     }
 
     @GetMapping
-    public Map<UUID, User> getUsers() {
-        return userService.getAllUsers();
+    public List<UserDto> getUsers() {
+        return UserService.getAllUsers();
     }
 
     @PostMapping
-    public User createUser(@RequestBody @Valid UserDto user) {
-        return userService.createUser(user);
+    public UserDto createUser(@RequestBody @Valid UserDto user) {
+        return UserService.createUser(user);
     }
 }
