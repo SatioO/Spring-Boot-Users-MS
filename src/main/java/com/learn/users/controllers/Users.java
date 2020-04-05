@@ -1,15 +1,19 @@
 package com.learn.users.controllers;
 
-import com.learn.users.dto.UserDto;
-import com.learn.users.services.IUserService;
+import com.learn.users.models.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Collection;
 import java.util.UUID;
+
+import javax.validation.Valid;
+
+import com.learn.users.dto.UserDto;
+import com.learn.users.services.IUserService;
+
 
 @RestController
 @RequestMapping("users")
@@ -28,7 +32,7 @@ public class Users {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody @Valid UserDto user) {
-        return new ResponseEntity<>(UserService.createUser(user), HttpStatus.OK);
+    public ResponseEntity<UserDto> createUser(@RequestBody @Valid UserModel user) {
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

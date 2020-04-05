@@ -3,7 +3,6 @@ package com.learn.users.services;
 import com.learn.users.dto.UserDto;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
 
 public interface IUserService {
