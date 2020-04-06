@@ -8,8 +8,8 @@ import java.io.Serializable;
 @Entity
 @Table(name="users")
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
-public class User implements Serializable {
-    private static final long serialVersionUID = 8634140154302985540L;
+public class User extends Audit<String> implements Serializable {
+    private static final long serialVersionUID = -272304721125200303L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
