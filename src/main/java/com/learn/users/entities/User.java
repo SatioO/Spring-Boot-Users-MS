@@ -18,6 +18,11 @@ public class User extends Audit<String> implements Serializable {
     private String name;
     @Column(nullable = false, length = 50)
     private String gender;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, updatable = false, unique = true)
     private String userId;
+
+    @PrePersist
+    public void persist() {
+        System.out.println("Persisting ...");
+    }
 }
