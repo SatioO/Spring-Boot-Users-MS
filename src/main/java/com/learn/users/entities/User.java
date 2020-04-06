@@ -1,17 +1,14 @@
 package com.learn.users.entities;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
+import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 
 @ToString
 @Entity
 @Table(name="users")
-@Getter @Setter
-public class UserEntity implements Serializable {
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
+public class User implements Serializable {
     private static final long serialVersionUID = 8634140154302985540L;
 
     @Id

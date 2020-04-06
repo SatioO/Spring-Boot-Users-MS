@@ -1,15 +1,14 @@
 package com.learn.users.dto;
 
 import lombok.*;
-
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
 @ToString
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
-public class UserDto implements Serializable {
-    private static final long serialVersionUID = -7710431516463436601L;
-
+public class UserDto {
+    @NotNull
     private String name;
+    @NotNull
     private String gender;
     private String userId;
 }
