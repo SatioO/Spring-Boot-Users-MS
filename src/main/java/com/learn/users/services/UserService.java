@@ -1,11 +1,16 @@
 package com.learn.users.services;
 
+import com.learn.users.dto.mappers.UserMapper;
+import com.learn.users.dto.models.UserDto;
 import com.learn.users.entities.User;
 import com.learn.users.repositories.UserRepository;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements IUserService {
@@ -13,19 +18,28 @@ public class UserService implements IUserService {
     private UserRepository userRepository;
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserDto> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(UserMapper::toUserDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);
+    public UserDto getUserById(Long id) {
+        User user = userRepository.findById(id).orElse(new User());
+        return UserMapper.toUserDto(user);
     }
 
     @Override
-    public User createUser(User userDetails) {
-        userDetails.setUserId(UUID.randomUUID().toString());
-        userRepository.save(userDetails);
-        return userDetails;
+    public UserDto createUser(UserDto user) {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        user.setUserId(UUID.randomUUID().toString());
+        User userEntity = modelMapper.map(user, User.class);
+
+        userRepository.save(userEntity);
+
+        return user;
     }
 }

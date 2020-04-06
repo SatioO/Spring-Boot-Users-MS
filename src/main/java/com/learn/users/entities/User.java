@@ -1,12 +1,15 @@
 package com.learn.users.entities;
 
 import lombok.*;
+import lombok.experimental.Accessors;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @ToString
 @Entity
 @Table(name="users")
+@Accessors(chain = true)
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class User extends Audit<String> implements Serializable {
     private static final long serialVersionUID = -272304721125200303L;
