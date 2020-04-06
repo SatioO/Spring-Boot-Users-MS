@@ -12,27 +12,27 @@ import java.util.*;
 
 @Service
 public class UserService implements IUserService {
-    Map<UUID, UserDto> users = new HashMap<>();
-
     @Autowired
     private UserRepository userRepository;
 
     @Override
-    public Collection<UserDto> getAllUsers() {
-        return users.values();
+    public List<UserDto> getAllUsers() {
+        return userRepository.findUsers();
     }
 
     @Override
     public UserDto getUserById(String id) {
-        return users.get(id);
+        return userRepository.findUserById(id);
     }
 
     @Override
     public UserDto createUser(UserDto userDetails) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
         userDetails.setUserId(UUID.randomUUID().toString());
         UserEntity userEntity = modelMapper.map(userDetails, UserEntity.class);
+
         userRepository.save(userEntity);
         return userDetails;
     }
