@@ -1,6 +1,8 @@
 package com.learn.users.controllers;
 
 import com.learn.users.dto.models.UserDTO;
+import com.learn.users.exceptions.ResourceNotFoundException;
+import com.learn.users.exceptions.UserNotFoundException;
 import com.learn.users.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +14,6 @@ import java.util.List;
 
 
 @RestController
-
 @RequestMapping("users")
 public class Users {
     @Autowired
@@ -20,9 +21,14 @@ public class Users {
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(userService.getUserById(id));
+        try {
+            UserDTO user = userService.getUserById(id);
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(user);
+        } catch (UserNotFoundException e) {
+            throw new ResourceNotFoundException(e.getMessage());
+        }
     }
 
     @GetMapping
