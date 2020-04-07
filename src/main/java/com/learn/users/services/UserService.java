@@ -1,7 +1,7 @@
 package com.learn.users.services;
 
 import com.learn.users.dto.mappers.UserMapper;
-import com.learn.users.dto.models.UserDto;
+import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.User;
 import com.learn.users.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -18,20 +18,20 @@ public class UserService implements IUserService {
     private UserRepository userRepository;
 
     @Override
-    public List<UserDto> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return userRepository.findAll().stream()
                 .map(UserMapper::toUserDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public UserDto getUserById(Long id) {
+    public UserDTO getUserById(Long id) {
         User user = userRepository.findById(id).orElse(new User());
         return UserMapper.toUserDto(user);
     }
 
     @Override
-    public UserDto createUser(UserDto user) {
+    public UserDTO createUser(UserDTO user) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
