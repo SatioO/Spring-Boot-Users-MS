@@ -12,7 +12,6 @@ import java.io.Serializable;
 @Accessors(chain = true)
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class User extends Audit<String> implements Serializable {
-    private static final long serialVersionUID = -272304721125200303L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +22,4 @@ public class User extends Audit<String> implements Serializable {
     private String gender;
     @Column(nullable = false, updatable = false, unique = true)
     private String userId;
-
-    @PrePersist
-    public void persist() {
-        System.out.println("Persisting ...");
-    }
 }

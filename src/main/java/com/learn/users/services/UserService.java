@@ -3,6 +3,7 @@ package com.learn.users.services;
 import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.User;
+import com.learn.users.exceptions.ResourceNotFoundException;
 import com.learn.users.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -26,7 +27,8 @@ public class UserService implements IUserService {
 
     @Override
     public UserDTO getUserById(Long id) {
-        User user = userRepository.findById(id).orElse(new User());
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Invalid user id : " + id));
         return UserMapper.toUserDto(user);
     }
 
