@@ -1,5 +1,6 @@
 package com.learn.users.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -17,9 +18,9 @@ public class Book {
     @Column(nullable = false)
     private String name;
 
-    @Column(name = "book_id")
+    @Column(name = "book_id", nullable = false, updatable = false, unique = true)
     private String bookId;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false, updatable = false, unique = true)
     private String userId;
 }
