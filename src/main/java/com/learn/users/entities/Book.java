@@ -1,14 +1,14 @@
 package com.learn.users.entities;
 
 import com.learn.users.dto.models.UserDTO;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "book")
-@Data
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +17,9 @@ public class Book {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, updatable = false, unique = true)
+    @Column(name = "book_id", nullable = false, updatable = false, unique = true)
     private String bookId;
+
+    @Column(name = "user_id", nullable = false, updatable = false, unique = true)
+    private String userId;
 }

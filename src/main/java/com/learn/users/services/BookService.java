@@ -5,6 +5,8 @@ import com.learn.users.dto.models.BookDTO;
 import com.learn.users.entities.Book;
 import com.learn.users.exceptions.BookNotFoundException;
 import com.learn.users.repositories.BookRepository;
+import org.apache.catalina.mapper.Mapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +28,13 @@ public class BookService implements IBookService {
     public BookDTO getBookById(Long id) throws BookNotFoundException {
         Book book = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book not found: " + id));
         return BookMapper.toBookDTO(book);
+    }
+
+    @Override
+    public BookDTO createBook(BookDTO book) {
+        ModelMapper modelMapper = new ModelMapper();
+        Book bookEntity = modelMapper.map(book, Book.class);
+
+        return BookMapper.toBookDTO(bookRepository.save(bookEntity));
     }
 }

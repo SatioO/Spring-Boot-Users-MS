@@ -6,6 +6,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @ToString
 @Getter @Setter @Accessors(chain = true)
@@ -18,4 +19,5 @@ public class UserDTO {
     @NotNull
     private String gender;
     private String userId;
+    private List<BookDTO> books;
 }
