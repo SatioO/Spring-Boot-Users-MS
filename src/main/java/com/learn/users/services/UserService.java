@@ -21,7 +21,7 @@ public class UserService implements IUserService {
     @Override
     public List<UserDTO> getAllUsers() {
         return userRepository.findAll().stream()
-                .map(UserMapper::toUserDto)
+                .map(UserMapper::toUserDTO)
                 .collect(Collectors.toList());
     }
 
@@ -29,7 +29,7 @@ public class UserService implements IUserService {
     public UserDTO getUserById(Long id) throws UserNotFoundException {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("Invalid user id : " + id));
-        return UserMapper.toUserDto(user);
+        return UserMapper.toUserDTO(user);
     }
 
     @Override

@@ -6,11 +6,11 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@ToString
+
 @Entity
 @Table(name="users")
-@Accessors(chain = true)
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class User extends Audit<String> implements Serializable {
 
     @Id
