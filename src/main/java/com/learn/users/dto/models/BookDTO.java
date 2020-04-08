@@ -13,10 +13,11 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookDTO {
+    private String bookId;
+
     @NotNull
     private String name;
+
     @NotNull
-    private UserDTO author;
-    @NotNull
-    private String bookId;
+    private String userId;
 }

@@ -16,8 +16,11 @@ import java.util.List;
 public class UserDTO {
     @NotNull
     private String name;
+
     @NotNull
     private String gender;
+
     private String userId;
+
     private List<BookDTO> books;
 }

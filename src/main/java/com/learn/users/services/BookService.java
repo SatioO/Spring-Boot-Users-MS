@@ -7,10 +7,12 @@ import com.learn.users.exceptions.BookNotFoundException;
 import com.learn.users.repositories.BookRepository;
 import org.apache.catalina.mapper.Mapper;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,7 +35,11 @@ public class BookService implements IBookService {
     @Override
     public BookDTO createBook(BookDTO book) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
         Book bookEntity = modelMapper.map(book, Book.class);
+        bookEntity.setBookId(UUID.randomUUID().toString());
+        System.out.println(bookEntity);
 
         return BookMapper.toBookDTO(bookRepository.save(bookEntity));
     }
