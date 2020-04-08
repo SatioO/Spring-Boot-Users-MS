@@ -39,6 +39,6 @@ public class Books {
 
     @PostMapping
     public ResponseEntity<BookDTO> createBook(@RequestBody @Valid BookDTO book) {
-        return ResponseEntity.status(HttpStatus.OK).body(bookService.createBook(book));
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookService.createBook(book));
     }
 }

@@ -6,6 +6,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @ToString
@@ -22,5 +23,5 @@ public class UserDTO {
 
     private String userId;
 
-    private List<BookDTO> books;
+    private List<BookDTO> books = new ArrayList<>();
 }

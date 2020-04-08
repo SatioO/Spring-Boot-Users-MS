@@ -1,9 +1,12 @@
 package com.learn.users.dto.mappers;
 
+import com.learn.users.dto.models.BookDTO;
 import com.learn.users.dto.models.UserDTO;
+import com.learn.users.entities.Book;
 import com.learn.users.entities.User;
 import org.springframework.stereotype.Component;
 
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -13,9 +16,20 @@ public class UserMapper {
                 .setGender(user.getGender())
                 .setUserId(user.getUserId())
                 .setBooks(
-                    user.getBooks().stream()
-                    .map(BookMapper::toBookDTO)
-                    .collect(Collectors.toList())
+                        user.getBooks().stream()
+                                .map(BookMapper::toBookDTO)
+                                .collect(Collectors.toList())
+                );
+    }
+
+    public static User toUserEntity(UserDTO user) {
+        return new User()
+                .setUserId(user.getUserId())
+                .setGender(user.getGender())
+                .setName(user.getName())
+                .setBooks(user.getBooks().stream()
+                        .map(BookMapper::toBookEntity)
+                        .collect(Collectors.toList())
                 );
     }
 }
