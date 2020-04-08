@@ -32,6 +32,11 @@ public class Books {
         }
     }
 
+    @GetMapping(path = "/user/{userId}")
+    public ResponseEntity<List<BookDTO>> getBooksByUserId(@PathVariable String userId) {
+        return ResponseEntity.status(HttpStatus.OK).body(bookService.getBooksByUserId(userId));
+    }
+
     @PostMapping
     public ResponseEntity<BookDTO> createBook(@RequestBody @Valid BookDTO book) {
         return ResponseEntity.status(HttpStatus.OK).body(bookService.createBook(book));

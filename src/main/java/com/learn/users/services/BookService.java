@@ -33,13 +33,18 @@ public class BookService implements IBookService {
     }
 
     @Override
+    public List<BookDTO> getBooksByUserId(String userId) {
+        List<BookDTO> books = bookRepository.findAllBooksByUserId(userId).stream().map(BookMapper::toBookDTO).collect(Collectors.toList());
+        return books;
+    }
+
+    @Override
     public BookDTO createBook(BookDTO book) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         Book bookEntity = modelMapper.map(book, Book.class);
         bookEntity.setBookId(UUID.randomUUID().toString());
-        System.out.println(bookEntity);
 
         return BookMapper.toBookDTO(bookRepository.save(bookEntity));
     }

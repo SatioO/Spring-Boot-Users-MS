@@ -8,5 +8,6 @@ import java.util.List;
 public interface IBookService {
     List<BookDTO> getAllBooks();
     BookDTO getBookById(Long id) throws BookNotFoundException;
+    List<BookDTO> getBooksByUserId(String userId);
     BookDTO createBook(BookDTO book);
 }
