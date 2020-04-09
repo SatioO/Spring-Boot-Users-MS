@@ -13,8 +13,11 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "orders")
 public class Orders {
-    @Autowired
     private IOrderService orderService;
+
+    public Orders(IOrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @GetMapping
     public List<OrderDTO> getOrders() {
@@ -22,7 +25,13 @@ public class Orders {
     }
 
     @PostMapping
-    public ResponseEntity<OrderDTO> createOrder(@RequestBody @Valid OrderDTO order) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.createNewOrder(order));
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public OrderDTO createOrder(@RequestBody @Valid OrderDTO order) {
+        return orderService.createNewOrder(order);
+    }
+
+    @GetMapping(path = "/{bookId}")
+    public List<OrderDTO> getOrdersByBookId(@PathVariable Long bookId) {
+        return orderService.getOrdersByBookId(bookId);
     }
 }

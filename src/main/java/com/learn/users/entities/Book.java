@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class Book {
+public class Book implements Serializable {
+    private static final long serialVersionUID = 9188451047948590951L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

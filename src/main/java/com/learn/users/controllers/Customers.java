@@ -16,8 +16,11 @@ import java.util.List;
 @RestController
 @RequestMapping("customers")
 public class Customers {
-    @Autowired
     private ICustomerService customerService;
+
+    public Customers(ICustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping(path = "/{id}")
     public CustomerDTO getCustomer(@PathVariable Long id) {
