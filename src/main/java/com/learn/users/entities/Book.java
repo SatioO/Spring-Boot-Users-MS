@@ -8,7 +8,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "books")
-@Getter @Setter
+@Getter
+@Setter
 @Accessors(chain = true)
 public class Book {
     @Id
@@ -20,7 +21,4 @@ public class Book {
 
     @Column(name = "book_id", nullable = false, updatable = false, unique = true)
     private String bookId;
-
-    @OneToMany
-    private List<Customer> authors;
 }

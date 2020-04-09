@@ -3,6 +3,7 @@ package com.learn.users.services;
 import com.learn.users.dto.mappers.OrderMapper;
 import com.learn.users.dto.models.OrderDTO;
 import com.learn.users.entities.Order;
+import com.learn.users.exceptions.CustomerNotFoundException;
 import com.learn.users.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

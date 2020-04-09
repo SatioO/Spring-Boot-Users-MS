@@ -5,10 +5,16 @@ import com.learn.users.entities.Order;
 
 public class OrderMapper {
     public static OrderDTO toOrderDTO(Order order) {
-        return new OrderDTO().setId(order.getId()).setPrice(order.getPrice());
+        return new OrderDTO()
+                .setId(order.getId())
+                .setPrice(order.getPrice())
+                .setCustomerId(order.getCustomerId());
     }
 
     public static Order toOrderEntity(OrderDTO order) {
-        return new Order().setId(order.getId()).setPrice(order.getPrice());
+        return new Order()
+                .setId(order.getId())
+                .setPrice(order.getPrice())
+                .setCustomerId(order.getCustomerId());
     }
 }

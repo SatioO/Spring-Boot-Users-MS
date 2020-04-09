@@ -18,4 +18,7 @@ public class OrderDTO {
 
     @NotNull
     private Integer price;
+
+    @NotNull
+    private Long customerId;
 }
