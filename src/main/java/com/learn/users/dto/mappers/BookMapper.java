@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class BookMapper {
     public static BookDTO toBookDTO(Book book) {
-        return new BookDTO().setName(book.getName()).setBookId(book.getBookId()).setUserId(book.getUserId());
+        return new BookDTO().setName(book.getName());
     }
 
     public static Book toBookEntity(BookDTO book) {
-        return new Book().setName(book.getName()).setBookId(book.getBookId()).setUserId(book.getUserId());
+        return new Book().setName(book.getName());
     }
 }

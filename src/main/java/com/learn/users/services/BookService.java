@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,14 +29,7 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public List<BookDTO> getBooksByUserId(String userId) {
-        List<BookDTO> books = bookRepository.findAllBooksByUserId(userId).stream().map(BookMapper::toBookDTO).collect(Collectors.toList());
-        return books;
-    }
-
-    @Override
     public BookDTO createBook(BookDTO book) {
-        book.setBookId(UUID.randomUUID().toString());
         return BookMapper.toBookDTO(bookRepository.save(BookMapper.toBookEntity(book)));
     }
 }

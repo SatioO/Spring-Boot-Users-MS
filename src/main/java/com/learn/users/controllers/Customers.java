@@ -1,11 +1,10 @@
 package com.learn.users.controllers;
 
-import com.learn.users.dto.models.UserDTO;
+import com.learn.users.dto.models.CustomerDTO;
 import com.learn.users.exceptions.ResourceNotFoundException;
-import com.learn.users.exceptions.UserNotFoundException;
-import com.learn.users.services.IUserService;
+import com.learn.users.exceptions.CustomerNotFoundException;
+import com.learn.users.services.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,34 +14,34 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("users")
-public class Users {
+@RequestMapping("customers")
+public class Customers {
     @Autowired
-    private IUserService userService;
+    private ICustomerService customerService;
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
+    public ResponseEntity<CustomerDTO> getCustomer(@PathVariable Long id) {
         try {
-            UserDTO user = userService.getUserById(id);
+            CustomerDTO customer = customerService.getCustomerById(id);
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(user);
-        } catch (UserNotFoundException e) {
+                    .body(customer);
+        } catch (CustomerNotFoundException e) {
             throw new ResourceNotFoundException(e.getMessage());
         }
     }
 
     @GetMapping
-    public ResponseEntity<List<UserDTO>> getUsers() {
+    public ResponseEntity<List<CustomerDTO>> getCustomers() {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(userService.getAllUsers());
+                .body(customerService.getAllCustomers());
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> createUser(@RequestBody @Valid UserDTO user) {
+    public ResponseEntity<CustomerDTO> createCustomer(@RequestBody @Valid CustomerDTO customer) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(userService.createUser(user));
+                .body(customerService.createCustomer(customer));
     }
 }

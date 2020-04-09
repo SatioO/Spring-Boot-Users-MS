@@ -14,14 +14,10 @@ import java.util.List;
 @AllArgsConstructor @NoArgsConstructor
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDTO {
+public class CustomerDTO {
     @NotNull
     private String name;
 
     @NotNull
     private String gender;
-
-    private String userId;
-
-    private List<BookDTO> books = new ArrayList<>();
 }
