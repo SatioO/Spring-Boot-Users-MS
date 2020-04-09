@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface IOrderService {
     List<OrderDTO> getAllOrders();
+    OrderDTO createNewOrder(OrderDTO order);
 }
