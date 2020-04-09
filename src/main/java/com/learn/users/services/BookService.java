@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Service
 public class BookService implements IBookService {
     @Autowired
-    BookRepository bookRepository;
+    private BookRepository bookRepository;
 
     @Override
     public List<BookDTO> getAllBooks() {

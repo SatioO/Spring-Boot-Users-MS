@@ -6,13 +6,13 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.util.List;
 
-@ToString
 @Entity
 @Table(name = "books")
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor @Accessors(chain = true)
+@Getter @Setter
+@Accessors(chain = true)
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false)

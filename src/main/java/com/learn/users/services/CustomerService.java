@@ -5,6 +5,7 @@ import com.learn.users.dto.models.CustomerDTO;
 import com.learn.users.entities.Customer;
 import com.learn.users.exceptions.CustomerNotFoundException;
 import com.learn.users.repositories.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -12,11 +13,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class CustomerService implements ICustomerService {
+    @Autowired
     private CustomerRepository customerRepository;
-
-    public CustomerService(CustomerRepository customerRepository ) {
-        this.customerRepository = customerRepository;
-    }
 
     @Override
     public List<CustomerDTO> getAllCustomers() {

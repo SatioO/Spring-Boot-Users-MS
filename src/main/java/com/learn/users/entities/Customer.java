@@ -6,13 +6,13 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@ToString
 @Entity
 @Table(name="customers")
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor @Accessors(chain = true)
+@Getter @Setter
+@Accessors(chain = true)
 public class Customer extends Audit<String> implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "first_name", nullable = false, length = 50)
