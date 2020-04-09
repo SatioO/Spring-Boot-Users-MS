@@ -36,7 +36,4 @@ public class CustomerDTO {
     @NotBlank
     @Email
     private String email;
-
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private List<OrderDTO> orders = new ArrayList<>();
 }

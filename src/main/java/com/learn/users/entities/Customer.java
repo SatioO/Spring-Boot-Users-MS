@@ -12,8 +12,6 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
-@NoArgsConstructor
-@AllArgsConstructor
 public class Customer implements Serializable {
     private static final long serialVersionUID = 8913185929168185170L;
 

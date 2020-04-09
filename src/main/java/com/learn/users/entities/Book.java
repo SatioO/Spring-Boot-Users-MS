@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,6 +20,16 @@ public class Book {
     @Column(nullable = false)
     private String name;
 
-    @Column(name = "book_id", nullable = false, updatable = false, unique = true)
-    private String bookId;
+    @Column
+    private String description;
+
+    @Column(nullable = false)
+    private int price;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date publishedOn;
+
+    @OneToMany
+    @JoinColumn(name = "book_id", referencedColumnName = "id")
+    private List<Order> orders;
 }

@@ -19,14 +19,14 @@ public class Books {
     IBookService bookService;
 
     @GetMapping
-    public ResponseEntity<List<BookDTO>> getBooks() {
-        return ResponseEntity.status(HttpStatus.OK).body(bookService.getAllBooks());
+    public List<BookDTO> getBooks() {
+        return bookService.getAllBooks();
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<BookDTO> getBook(@PathVariable Long id) {
+    public BookDTO getBook(@PathVariable Long id) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(bookService.getBookById(id));
+            return bookService.getBookById(id);
         } catch (BookNotFoundException e) {
             throw new ResourceNotFoundException(e.getMessage());
         }

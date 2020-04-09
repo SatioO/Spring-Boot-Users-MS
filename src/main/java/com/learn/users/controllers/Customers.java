@@ -20,22 +20,17 @@ public class Customers {
     private ICustomerService customerService;
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<CustomerDTO> getCustomer(@PathVariable Long id) {
+    public CustomerDTO getCustomer(@PathVariable Long id) {
         try {
-            CustomerDTO customer = customerService.getCustomerById(id);
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(customer);
+            return customerService.getCustomerById(id);
         } catch (CustomerNotFoundException e) {
             throw new ResourceNotFoundException(e.getMessage());
         }
     }
 
     @GetMapping
-    public ResponseEntity<List<CustomerDTO>> getCustomers() {
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(customerService.getAllCustomers());
+    public List<CustomerDTO> getCustomers() {
+        return customerService.getAllCustomers();
     }
 
     @PostMapping

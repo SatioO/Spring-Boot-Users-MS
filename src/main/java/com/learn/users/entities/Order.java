@@ -1,8 +1,6 @@
 package com.learn.users.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
@@ -14,8 +12,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Accessors(chain = true)
-@NoArgsConstructor
-@AllArgsConstructor
 public class Order implements Serializable {
     private static final long serialVersionUID = -7826265172441981769L;
 
@@ -24,8 +20,11 @@ public class Order implements Serializable {
     private Long id;
 
     @Column(nullable = false)
-    private Integer price;
+    private int price;
 
     @Column(name = "customer_id", nullable = false)
     private Long customerId;
+
+    @Column(name = "book_id", nullable = false)
+    private Long bookId;
 }

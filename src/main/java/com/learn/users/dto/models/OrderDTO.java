@@ -17,8 +17,11 @@ public class OrderDTO {
     private Long id;
 
     @NotNull
-    private Integer price;
+    private int price;
 
     @NotNull
     private Long customerId;
+
+    @NotNull
+    private Long bookId;
 }

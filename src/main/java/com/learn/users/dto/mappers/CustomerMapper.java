@@ -15,12 +15,7 @@ public class CustomerMapper {
                 .setFirstName(customer.getFirstName())
                 .setLastName(customer.getLastName())
                 .setGender(customer.getGender())
-                .setEmail(customer.getEmail())
-                .setOrders(customer.getOrders()
-                        .stream()
-                        .map(OrderMapper::toOrderDTO)
-                        .collect(Collectors.toList())
-                );
+                .setEmail(customer.getEmail());
     }
 
     public static Customer toCustomerEntity(CustomerDTO customer) {
@@ -29,11 +24,6 @@ public class CustomerMapper {
                 .setFirstName(customer.getFirstName())
                 .setLastName(customer.getLastName())
                 .setGender(customer.getGender())
-                .setEmail(customer.getEmail())
-                .setOrders(customer.getOrders()
-                        .stream()
-                        .map(OrderMapper::toOrderEntity)
-                        .collect(Collectors.toList())
-                );
+                .setEmail(customer.getEmail());
     }
 }
