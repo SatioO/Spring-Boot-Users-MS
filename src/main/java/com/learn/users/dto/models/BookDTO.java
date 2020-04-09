@@ -1,5 +1,6 @@
 package com.learn.users.dto.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -29,6 +30,7 @@ public class BookDTO {
     private int price;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date publishedOn = new Date();
 
 }

@@ -26,10 +26,10 @@ public class Book {
     @Column(nullable = false)
     private int price;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date publishedOn;
 
     @OneToMany
-    @JoinColumn(name = "book_id", referencedColumnName = "id")
+    @JoinColumn(name = "book_id")
     private List<Order> orders;
 }

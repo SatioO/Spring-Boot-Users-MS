@@ -31,7 +31,7 @@ public class Customer implements Serializable {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @OneToMany
+    @JoinColumn(name = "customer_id")
     private List<Order> orders;
 }
