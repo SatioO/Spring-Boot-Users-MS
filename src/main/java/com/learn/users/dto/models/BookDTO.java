@@ -7,9 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import lombok.experimental.Accessors;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data

@@ -33,6 +33,6 @@ public class Book implements Serializable {
     private Date publishedOn;
 
     @OneToMany
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "bookId")
     private List<Order> orders;
 }

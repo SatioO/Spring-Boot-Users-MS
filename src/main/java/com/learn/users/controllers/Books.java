@@ -1,12 +1,8 @@
 package com.learn.users.controllers;
 
 import com.learn.users.dto.models.BookDTO;
-import com.learn.users.exceptions.BookNotFoundException;
-import com.learn.users.exceptions.ResourceNotFoundException;
 import com.learn.users.services.IBookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,15 +24,12 @@ public class Books {
 
     @GetMapping(path = "/{id}")
     public BookDTO getBook(@PathVariable Long id) {
-        try {
-            return bookService.getBookById(id);
-        } catch (BookNotFoundException e) {
-            throw new ResourceNotFoundException(e.getMessage());
-        }
+        return bookService.getBookById(id);
     }
 
     @PostMapping
-    public ResponseEntity<BookDTO> createBook(@RequestBody @Valid BookDTO book) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(bookService.createBook(book));
+    @ResponseStatus(HttpStatus.CREATED)
+    public BookDTO createBook(@RequestBody @Valid BookDTO book) {
+        return bookService.createBook(book);
     }
 }

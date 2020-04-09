@@ -19,10 +19,10 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "first_name", nullable = false, length = 50)
+    @Column(nullable = false, length = 50)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 50)
+    @Column(nullable = false, length = 50)
     private String lastName;
 
     @Column(nullable = false, length = 10)
@@ -32,6 +32,6 @@ public class Customer implements Serializable {
     private String email;
 
     @OneToMany
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customerId")
     private List<Order> orders;
 }

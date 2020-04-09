@@ -1,12 +1,8 @@
 package com.learn.users.controllers;
 
 import com.learn.users.dto.models.CustomerDTO;
-import com.learn.users.exceptions.ResourceNotFoundException;
-import com.learn.users.exceptions.CustomerNotFoundException;
 import com.learn.users.services.ICustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -24,11 +20,7 @@ public class Customers {
 
     @GetMapping(path = "/{id}")
     public CustomerDTO getCustomer(@PathVariable Long id) {
-        try {
-            return customerService.getCustomerById(id);
-        } catch (CustomerNotFoundException e) {
-            throw new ResourceNotFoundException(e.getMessage());
-        }
+        return customerService.getCustomerById(id);
     }
 
     @GetMapping
@@ -37,9 +29,8 @@ public class Customers {
     }
 
     @PostMapping
-    public ResponseEntity<CustomerDTO> createCustomer(@RequestBody @Valid CustomerDTO customer) {
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(customerService.createCustomer(customer));
+    @ResponseStatus(HttpStatus.CREATED)
+    public CustomerDTO createCustomer(@RequestBody @Valid CustomerDTO customer) {
+        return customerService.createCustomer(customer);
     }
 }

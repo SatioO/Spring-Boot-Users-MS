@@ -22,9 +22,9 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private int price;
 
-    @Column(name = "customer_id", nullable = false)
+    @Column(nullable = false)
     private Long customerId;
 
-    @Column(name = "book_id", nullable = false)
+    @Column(nullable = false)
     private Long bookId;
 }
