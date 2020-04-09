@@ -8,13 +8,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomerMapper {
     public static CustomerDTO toCustomerDTO(Customer customer) {
-        return new CustomerDTO().setName(customer.getName())
-                .setGender(customer.getGender());
+        return new CustomerDTO()
+                .setFirstName(customer.getFirstName())
+                .setLastName(customer.getLastName())
+                .setGender(customer.getGender())
+                .setEmail(customer.getEmail());
     }
 
     public static Customer toCustomerEntity(CustomerDTO customer) {
         return new Customer()
+                .setFirstName(customer.getFirstName())
+                .setLastName(customer.getLastName())
                 .setGender(customer.getGender())
-                .setName(customer.getName());
+                .setEmail(customer.getEmail());
     }
 }
