@@ -3,6 +3,8 @@ package com.learn.users.services;
 import com.learn.users.dto.mappers.OrderMapper;
 import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.OrderDTO;
+import com.learn.users.dto.models.UserDTO;
+import com.learn.users.entities.User;
 import com.learn.users.exceptions.OrderNotFoundException;
 import com.learn.users.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
@@ -40,6 +42,12 @@ public class OrderService implements IOrderService {
 
     @Override
     public OrderDTO createNewOrder(OrderDTO order) {
-        return OrderMapper.toOrderDTO(orderRepository.save(OrderMapper.toOrderEntity(order)));
+        return OrderMapper.toOrderDTO(orderRepository.save(
+                OrderMapper.toOrderEntity(order)
+                        .setUser(
+                                new User().setId(order.getUserId())
+                        )
+                )
+        );
     }
 }
