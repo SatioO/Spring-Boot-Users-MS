@@ -22,14 +22,15 @@ public class Orders {
         return orderService.getAllOrders();
     }
 
+    @GetMapping(path = "/{bookId}")
+    public List<OrderDTO> findById(@PathVariable Long bookId) {
+        return orderService.getOrdersByBookId(bookId);
+    }
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public OrderDTO save(@RequestBody @Valid OrderDTO order) {
         return orderService.createNewOrder(order);
     }
 
-    @GetMapping(path = "/{bookId}")
-    public List<OrderDTO> findById(@PathVariable Long bookId) {
-        return orderService.getOrdersByBookId(bookId);
-    }
 }

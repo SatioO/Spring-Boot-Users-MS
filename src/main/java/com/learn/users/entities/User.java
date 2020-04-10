@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,7 +33,6 @@ public class User implements Serializable {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @OneToMany
-    @JoinColumn(name = "userId", referencedColumnName = "id")
-    private List<Order> orders;
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders = new ArrayList<>();
 }

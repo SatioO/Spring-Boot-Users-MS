@@ -34,8 +34,8 @@ public class OrderDTO {
     private Date deliveredOn;
 
     @NotNull
-    private Long userId;
-
-    @NotNull
     private Long bookId;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private UserDTO user;
 }

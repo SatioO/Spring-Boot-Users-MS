@@ -36,8 +36,8 @@ public class Order implements Serializable {
     private Date deliveredOn;
 
     @Column(nullable = false)
-    private Long userId;
-
-    @Column(nullable = false)
     private Long bookId;
+
+    @ManyToOne
+    private User user;
 }

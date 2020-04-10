@@ -1,10 +1,14 @@
 package com.learn.users.services;
 
 import com.learn.users.dto.mappers.OrderMapper;
+import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.OrderDTO;
 import com.learn.users.entities.Order;
+import com.learn.users.entities.User;
 import com.learn.users.exceptions.OrderNotFoundException;
+import com.learn.users.exceptions.UserNotFoundException;
 import com.learn.users.repositories.OrderRepository;
+import com.learn.users.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +17,11 @@ import java.util.stream.Collectors;
 @Service
 public class OrderService implements IOrderService {
     private OrderRepository orderRepository;
+    private UserRepository userRepository;
 
-    public OrderService(OrderRepository orderRepository) {
+    public OrderService(OrderRepository orderRepository, UserRepository userRepository) {
         this.orderRepository = orderRepository;
+        this.userRepository = userRepository;
     }
 
     public List<OrderDTO> getAllOrders() {
