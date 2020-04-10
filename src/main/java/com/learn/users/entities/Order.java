@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "orders")
@@ -21,6 +22,18 @@ public class Order implements Serializable {
 
     @Column(nullable = false)
     private int price;
+
+    @Column(nullable = false)
+    private int quantity;
+
+    @Column(length = 10)
+    private String couponCode;
+
+    @Temporal(TemporalType.DATE)
+    private Date orderedOn;
+
+    @Temporal(TemporalType.DATE)
+    private Date deliveredOn;
 
     @Column(nullable = false)
     private Long userId;

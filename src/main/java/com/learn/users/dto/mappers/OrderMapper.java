@@ -9,7 +9,11 @@ public class OrderMapper {
                 .setId(order.getId())
                 .setPrice(order.getPrice())
                 .setUserId(order.getUserId())
-                .setBookId(order.getBookId());
+                .setBookId(order.getBookId())
+                .setCouponCode(order.getCouponCode())
+                .setDeliveredOn(order.getDeliveredOn())
+                .setOrderedOn(order.getOrderedOn())
+                .setQuantity(order.getQuantity());
     }
 
     public static Order toOrderEntity(OrderDTO order) {
@@ -17,6 +21,10 @@ public class OrderMapper {
                 .setId(order.getId())
                 .setPrice(order.getPrice())
                 .setUserId(order.getUserId())
-                .setBookId(order.getBookId());
+                .setBookId(order.getBookId())
+                .setCouponCode(order.getCouponCode())
+                .setDeliveredOn(order.getDeliveredOn())
+                .setOrderedOn(order.getOrderedOn())
+                .setQuantity(order.getQuantity());
     }
 }
