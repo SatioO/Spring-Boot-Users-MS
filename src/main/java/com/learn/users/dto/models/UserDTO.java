@@ -3,14 +3,13 @@ package com.learn.users.dto.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.learn.users.enums.Gender;
 import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Accessors(chain = true)
@@ -29,8 +28,7 @@ public class UserDTO {
     private String lastName;
 
     @NotNull
-    @NotBlank
-    private String gender;
+    private Gender gender;
 
     @NotNull
     @NotBlank
