@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("users")
+@RequestMapping(path = "users")
 public class Users {
     private IUserService userService;
 
@@ -19,18 +19,18 @@ public class Users {
     }
 
     @GetMapping(path = "/{id}")
-    public UserDTO getUser(@PathVariable Long id) {
+    public UserDTO findById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @GetMapping
-    public List<UserDTO> getUsers() {
+    public List<UserDTO> findAll() {
         return userService.getAllUsers();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO createUsers(@RequestBody @Valid UserDTO customer) {
+    public UserDTO save(@RequestBody @Valid UserDTO customer) {
         return userService.createUser(customer);
     }
 }

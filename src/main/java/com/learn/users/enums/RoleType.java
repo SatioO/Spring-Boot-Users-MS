@@ -1,5 +1,5 @@
 package com.learn.users.enums;
 
-public enum Role {
+public enum RoleType {
     ADMIN, CUSTOMER, AUTHOR
 }

@@ -12,7 +12,7 @@ public class UserMapper {
                 .setId(user.getId())
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
-                .setGender(user.getGender())
+                .setGenderType(user.getGenderType())
                 .setEmail(user.getEmail());
     }
 
@@ -21,7 +21,7 @@ public class UserMapper {
                 .setId(user.getId())
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
-                .setGender(user.getGender())
+                .setGenderType(user.getGenderType())
                 .setEmail(user.getEmail());
     }
 }

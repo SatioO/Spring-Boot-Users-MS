@@ -18,18 +18,18 @@ public class Books {
     }
 
     @GetMapping
-    public List<BookDTO> getBooks() {
+    public List<BookDTO> findAll() {
         return bookService.getAllBooks();
     }
 
     @GetMapping(path = "/{id}")
-    public BookDTO getBook(@PathVariable Long id) {
+    public BookDTO findById(@PathVariable Long id) {
         return bookService.getBookById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDTO createBook(@RequestBody @Valid BookDTO book) {
+    public BookDTO save(@RequestBody @Valid BookDTO book) {
         return bookService.createBook(book);
     }
 }

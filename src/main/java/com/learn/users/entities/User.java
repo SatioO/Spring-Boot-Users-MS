@@ -1,6 +1,6 @@
 package com.learn.users.entities;
 
-import com.learn.users.enums.Gender;
+import com.learn.users.enums.GenderType;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -27,7 +27,7 @@ public class User implements Serializable {
     private String lastName;
 
     @Enumerated(EnumType.ORDINAL)
-    private Gender gender;
+    private GenderType genderType;
 
     @Column(nullable = false, length = 50)
     private String email;

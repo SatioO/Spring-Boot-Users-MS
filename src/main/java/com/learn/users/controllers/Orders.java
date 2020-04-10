@@ -18,18 +18,18 @@ public class Orders {
     }
 
     @GetMapping
-    public List<OrderDTO> getOrders() {
+    public List<OrderDTO> findAll() {
         return orderService.getAllOrders();
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public OrderDTO createOrder(@RequestBody @Valid OrderDTO order) {
+    public OrderDTO save(@RequestBody @Valid OrderDTO order) {
         return orderService.createNewOrder(order);
     }
 
     @GetMapping(path = "/{bookId}")
-    public List<OrderDTO> getOrdersByBookId(@PathVariable Long bookId) {
+    public List<OrderDTO> findById(@PathVariable Long bookId) {
         return orderService.getOrdersByBookId(bookId);
     }
 }
