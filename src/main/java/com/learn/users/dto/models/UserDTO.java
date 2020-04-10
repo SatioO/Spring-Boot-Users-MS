@@ -16,7 +16,7 @@ import java.util.List;
 @Accessors(chain = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CustomerDTO {
+public class UserDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 

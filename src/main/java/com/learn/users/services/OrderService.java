@@ -7,7 +7,6 @@ import com.learn.users.exceptions.OrderNotFoundException;
 import com.learn.users.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,7 +27,8 @@ public class OrderService implements IOrderService {
 
     @Override
     public List<OrderDTO> getOrdersByBookId(Long bookId) throws OrderNotFoundException {
-        return orderRepository.getOrdersByBookId(bookId).orElseThrow(() -> new OrderNotFoundException("Book id is not present"))
+        return orderRepository.getOrdersByBookId(bookId)
+                .orElseThrow(() -> new OrderNotFoundException("Book id is not present"))
                 .stream()
                 .map(OrderMapper::toOrderDTO)
                 .collect(Collectors.toList()

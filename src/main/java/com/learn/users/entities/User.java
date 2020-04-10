@@ -8,11 +8,11 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="customers")
+@Table(name="users")
 @Getter
 @Setter
 @Accessors(chain = true)
-public class Customer implements Serializable {
+public class User implements Serializable {
     private static final long serialVersionUID = 8913185929168185170L;
 
     @Id
@@ -32,6 +32,6 @@ public class Customer implements Serializable {
     private String email;
 
     @OneToMany
-    @JoinColumn(name = "customerId")
+    @JoinColumn(name = "userId", referencedColumnName = "id")
     private List<Order> orders;
 }

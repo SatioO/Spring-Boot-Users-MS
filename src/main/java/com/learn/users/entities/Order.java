@@ -23,7 +23,7 @@ public class Order implements Serializable {
     private int price;
 
     @Column(nullable = false)
-    private Long customerId;
+    private Long userId;
 
     @Column(nullable = false)
     private Long bookId;
