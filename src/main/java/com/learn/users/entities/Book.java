@@ -8,16 +8,17 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "books")
 @Getter
 @Setter
 @Accessors(chain = true)
+@Entity
+@Table(name = "books")
 public class Book implements Serializable {
     private static final long serialVersionUID = 9188451047948590951L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false, updatable = false)
     private Long id;
 
     @Column(nullable = false)

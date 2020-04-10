@@ -2,6 +2,7 @@ package com.learn.users.dto.mappers;
 
 import com.learn.users.dto.models.OrderDTO;
 import com.learn.users.entities.Order;
+import com.learn.users.entities.User;
 
 public class OrderMapper {
     public static OrderDTO toOrderDTO(Order order) {
@@ -22,6 +23,7 @@ public class OrderMapper {
                 .setBookId(order.getBookId())
                 .setCouponCode(order.getCouponCode())
                 .setDeliveredOn(order.getDeliveredOn())
-                .setOrderedOn(order.getOrderedOn());
+                .setOrderedOn(order.getOrderedOn())
+                .setUser(new User().setId(order.getUserId()));
     }
 }

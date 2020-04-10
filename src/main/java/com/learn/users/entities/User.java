@@ -3,22 +3,24 @@ package com.learn.users.entities;
 import com.learn.users.enums.GenderType;
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name="users")
 @Getter
 @Setter
 @Accessors(chain = true)
+@Entity
+@Table(name="users")
 public class User implements Serializable {
     private static final long serialVersionUID = 8913185929168185170L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false, updatable = false)
     private Long id;
 
     @Column(nullable = false, length = 50)
@@ -33,6 +35,7 @@ public class User implements Serializable {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @OneToMany(mappedBy = "user")
-    private List<Order> orders = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(value = FetchMode.SELECT)
+    private List<Order> orders;
 }
