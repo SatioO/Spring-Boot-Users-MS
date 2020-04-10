@@ -28,7 +28,7 @@ public class UserDTO {
     private String lastName;
 
     @NotNull
-    private GenderType genderType;
+    private GenderType gender;
 
     @NotNull
     @NotBlank

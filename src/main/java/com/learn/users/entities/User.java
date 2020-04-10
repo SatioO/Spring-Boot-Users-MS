@@ -27,7 +27,7 @@ public class User implements Serializable {
     private String lastName;
 
     @Enumerated(EnumType.ORDINAL)
-    private GenderType genderType;
+    private GenderType gender;
 
     @Column(nullable = false, length = 50)
     private String email;

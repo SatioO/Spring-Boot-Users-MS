@@ -4,6 +4,8 @@ import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.User;
 import org.springframework.stereotype.Component;
 
+import java.util.stream.Collectors;
+
 
 @Component
 public class UserMapper {
@@ -12,7 +14,7 @@ public class UserMapper {
                 .setId(user.getId())
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
-                .setGenderType(user.getGenderType())
+                .setGender(user.getGender())
                 .setEmail(user.getEmail());
     }
 
@@ -21,7 +23,7 @@ public class UserMapper {
                 .setId(user.getId())
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
-                .setGenderType(user.getGenderType())
+                .setGender(user.getGender())
                 .setEmail(user.getEmail());
     }
 }
