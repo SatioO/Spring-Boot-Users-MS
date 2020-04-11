@@ -1,7 +1,6 @@
 package com.learn.users.controllers;
 
 import com.learn.users.entities.Comment;
-import com.learn.users.entities.Post;
 import com.learn.users.exceptions.ResourceNotFoundException;
 import com.learn.users.repositories.CommentsRepository;
 import com.learn.users.repositories.PostsRepository;
@@ -11,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "comments")
