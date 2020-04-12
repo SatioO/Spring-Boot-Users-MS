@@ -22,8 +22,8 @@ public class Posts {
     private PostsRepository postsRepository;
 
     @GetMapping
-    public Page<Post> getAllPosts(Pageable pageable) {
-        return postsRepository.findAll(pageable);
+    public List<Post> getAllPosts() {
+        return postsRepository.findAll();
     }
 
     @PostMapping

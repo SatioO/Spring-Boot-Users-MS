@@ -20,19 +20,19 @@ public class Comments {
     @Autowired
     private PostsRepository postsRepository;
 
-    @GetMapping("/{postId}/comments")
+    @GetMapping("/{postId}")
     public Page<Comment> getAllCommentsByPostId(@PathVariable (value = "postId") Long postId,
                                                 Pageable pageable) {
         return commentsRepository.findByPostId(postId, pageable);
     }
 
-    @PostMapping("/{postId}/comments")
+    @PostMapping("/{postId}")
     public Comment createComment(@PathVariable (value = "postId") Long postId,
                                  @Valid @RequestBody Comment comment) {
         return postsRepository.findById(postId).map(post -> {
             comment.setPost(post);
             return commentsRepository.save(comment);
-        }).orElseThrow(() -> new ResourceNotFoundException("PostId " + postId + " not found"));
+        }).orElse(new Comment());
     }
 
 }
