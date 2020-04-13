@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IOrderService {
     List<OrderDTO> getAllOrders();
-    OrderDTO createNewOrder(OrderDTO order) throws UserNotFoundException;
+    OrderDTO createNewOrder(Long userId, OrderDTO order) throws UserNotFoundException;
 }

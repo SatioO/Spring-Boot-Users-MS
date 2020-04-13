@@ -6,28 +6,24 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
 @Accessors(chain = true)
 public class UserDTO {
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
-    @NotNull
-    @NotBlank
+    @NotEmpty(message = "First name must not be empty")
     private String firstName;
 
-    @NotNull
-    @NotBlank
+    @NotEmpty(message = "Last name must not be empty")
     private String lastName;
+
+    @NotEmpty(message = "Email must not be empty")
+    @Email(message = "Email must be a valid email address")
+    private String email;
 
     @NotNull
     private GenderType gender;
-
-    @NotNull
-    @NotBlank
-    @Email
-    private String email;
 }

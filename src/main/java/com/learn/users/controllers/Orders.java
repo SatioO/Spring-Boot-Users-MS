@@ -24,8 +24,8 @@ public class Orders {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public OrderDTO save(@RequestBody @Valid OrderDTO order) {
-        return orderService.createNewOrder(order);
+    public OrderDTO save(@RequestParam("userId") Long userId, @RequestBody @Valid OrderDTO order) {
+        return orderService.createNewOrder(userId, order);
     }
 
 }

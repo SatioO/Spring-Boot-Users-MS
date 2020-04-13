@@ -31,13 +31,13 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public OrderDTO createNewOrder(OrderDTO order) {
-        return userRepository.findById(order.getUserId()).map(user ->
+    public OrderDTO createNewOrder(Long userId, OrderDTO order) {
+        return userRepository.findById(userId).map(user ->
             OrderMapper.toOrderDTO(
                     orderRepository.save(
                             user.add(OrderMapper.toOrderEntity(order))
                     )
             )
-        ).orElseThrow(() -> new UserNotFoundException("user not found: " + order.getUserId()));
+        ).orElseThrow(() -> new UserNotFoundException("user not found: " + userId));
     }
 }
