@@ -35,4 +35,10 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
+
+    public Order add(Order order) {
+        this.orders.add(order);
+        order.setUser(this);
+        return order;
+    }
 }

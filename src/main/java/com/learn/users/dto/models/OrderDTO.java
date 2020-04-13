@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.HashMap;
 
 @Data
 @Accessors(chain = true)
@@ -27,4 +28,15 @@ public class OrderDTO {
 
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date deliveredOn;
+
+    @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Long userId;
+
+    @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Long bookId;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private UserDTO user;
 }
