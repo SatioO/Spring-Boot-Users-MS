@@ -8,7 +8,6 @@ public class OrderMapper {
         return new OrderDTO()
                 .setId(order.getId())
                 .setPrice(order.getPrice())
-                .setBookId(order.getBookId())
                 .setCouponCode(order.getCouponCode())
                 .setDeliveredOn(order.getDeliveredOn())
                 .setOrderedOn(order.getOrderedOn())
@@ -19,7 +18,6 @@ public class OrderMapper {
         return new Order()
                 .setId(order.getId())
                 .setPrice(order.getPrice())
-                .setBookId(order.getBookId())
                 .setCouponCode(order.getCouponCode())
                 .setDeliveredOn(order.getDeliveredOn())
                 .setOrderedOn(order.getOrderedOn());

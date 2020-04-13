@@ -22,20 +22,9 @@ public class OrderDTO {
 
     private String couponCode;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date orderedOn = new Date();
 
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date deliveredOn;
-
-    @NotNull
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Long userId;
-
-    @NotNull
-    private Long bookId;
-
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private UserDTO user;
 }

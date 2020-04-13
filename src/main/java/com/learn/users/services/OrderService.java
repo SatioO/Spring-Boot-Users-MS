@@ -1,10 +1,7 @@
 package com.learn.users.services;
 
 import com.learn.users.dto.mappers.OrderMapper;
-import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.OrderDTO;
-import com.learn.users.entities.User;
-import com.learn.users.exceptions.OrderNotFoundException;
 import com.learn.users.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,31 +19,14 @@ public class OrderService implements IOrderService {
     public List<OrderDTO> getAllOrders() {
         return orderRepository.findAll()
                 .stream()
-                .map(order -> OrderMapper
-                        .toOrderDTO(order)
-                        .setUser(UserMapper.toUserDTO(order.getUser()))
-                )
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<OrderDTO> getOrdersByBookId(Long bookId) throws OrderNotFoundException {
-        return orderRepository.getOrdersByBookId(bookId)
-                .orElseThrow(() -> new OrderNotFoundException("Book id is not present"))
-                .stream()
                 .map(OrderMapper::toOrderDTO)
-                .collect(Collectors.toList()
-                );
+                .collect(Collectors.toList());
     }
 
     @Override
     public OrderDTO createNewOrder(OrderDTO order) {
         return OrderMapper.toOrderDTO(orderRepository.save(
-                OrderMapper.toOrderEntity(order)
-                        .setUser(
-                                new User().setId(order.getUserId())
-                        )
-                )
+                OrderMapper.toOrderEntity(order))
         );
     }
 }

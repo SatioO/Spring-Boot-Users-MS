@@ -3,8 +3,6 @@ package com.learn.users.entities;
 import com.learn.users.enums.GenderType;
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -36,6 +34,5 @@ public class User implements Serializable {
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Fetch(value = FetchMode.SELECT)
     private List<Order> orders;
 }
