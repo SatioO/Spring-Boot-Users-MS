@@ -2,20 +2,18 @@ package com.learn.users.controllers;
 
 import com.learn.users.dto.models.RoleDTO;
 import com.learn.users.services.IRoleService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping(path = "roles")
 public class Roles {
     private IRoleService roleService;
-
-    public Roles(IRoleService roleService) {
-        this.roleService = roleService;
-    }
 
     @GetMapping
     public List<RoleDTO> findAll() {

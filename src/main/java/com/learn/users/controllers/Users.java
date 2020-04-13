@@ -2,21 +2,18 @@ package com.learn.users.controllers;
 
 import com.learn.users.dto.models.UserDTO;
 import com.learn.users.services.IUserService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
-
+@AllArgsConstructor
 @RestController
 @RequestMapping(path = "users")
 public class Users {
     private IUserService userService;
-
-    public Users(IUserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping(path = "/{id}")
     public UserDTO findById(@PathVariable Long id) {

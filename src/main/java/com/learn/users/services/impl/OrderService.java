@@ -7,20 +7,17 @@ import com.learn.users.exceptions.UserNotFoundException;
 import com.learn.users.repositories.OrderRepository;
 import com.learn.users.repositories.UserRepository;
 import com.learn.users.services.IOrderService;
+import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Data
 @Service
 public class OrderService implements IOrderService {
-    private OrderRepository orderRepository;
-    private UserRepository userRepository;
-
-    public OrderService(OrderRepository orderRepository, UserRepository userRepository) {
-        this.orderRepository = orderRepository;
-        this.userRepository = userRepository;
-    }
+    private final OrderRepository orderRepository;
+    private final UserRepository userRepository;
 
     public List<OrderDTO> getAllOrders() {
         return orderRepository.findAll()
