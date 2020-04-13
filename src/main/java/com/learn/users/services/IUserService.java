@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface IUserService {
     List<UserDTO> getAllUsers();
+
     UserDTO getUserById(Long id) throws UserNotFoundException;
+
     UserDTO createUser(UserDTO user);
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/books")
 public class Books {
-    IBookService bookService;
+    private final IBookService bookService;
 
     @GetMapping
     public List<BookDTO> findAll() {

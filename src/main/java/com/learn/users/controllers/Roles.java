@@ -2,10 +2,11 @@ package com.learn.users.controllers;
 
 import com.learn.users.dto.models.RoleDTO;
 import com.learn.users.services.IRoleService;
-import lombok.AllArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import lombok.AllArgsConstructor;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "roles")
 public class Roles {
-    private IRoleService roleService;
+    private final IRoleService roleService;
 
     @GetMapping
     public List<RoleDTO> findAll() {

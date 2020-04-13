@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Service
 public class RoleService implements IRoleService {
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
     @Override
     public List<RoleDTO> getAllRoles() {

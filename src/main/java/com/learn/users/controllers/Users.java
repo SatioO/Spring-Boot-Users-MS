@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "users")
 public class Users {
-    private IUserService userService;
+    private final IUserService userService;
 
     @GetMapping(path = "/{id}")
     public UserDTO findById(@PathVariable Long id) {

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Service
 public class UserService implements IUserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public List<UserDTO> getAllUsers() {

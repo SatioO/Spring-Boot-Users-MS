@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Service
 public class BookService implements IBookService {
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
     @Override
     public List<BookDTO> getAllBooks() {
