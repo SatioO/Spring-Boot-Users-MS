@@ -1,10 +1,11 @@
-package com.learn.users.services;
+package com.learn.users.services.impl;
 
 import com.learn.users.dto.mappers.BookMapper;
 import com.learn.users.dto.models.BookDTO;
 import com.learn.users.entities.Book;
 import com.learn.users.exceptions.BookNotFoundException;
 import com.learn.users.repositories.BookRepository;
+import com.learn.users.services.IBookService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

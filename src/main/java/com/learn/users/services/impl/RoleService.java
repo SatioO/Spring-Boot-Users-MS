@@ -1,8 +1,9 @@
-package com.learn.users.services;
+package com.learn.users.services.impl;
 
 import com.learn.users.dto.mappers.RoleMapper;
 import com.learn.users.dto.models.RoleDTO;
 import com.learn.users.repositories.RoleRepository;
+import com.learn.users.services.IRoleService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

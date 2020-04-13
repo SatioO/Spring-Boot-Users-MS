@@ -1,10 +1,11 @@
-package com.learn.users.services;
+package com.learn.users.services.impl;
 
 import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.User;
 import com.learn.users.exceptions.UserNotFoundException;
 import com.learn.users.repositories.UserRepository;
+import com.learn.users.services.IUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
