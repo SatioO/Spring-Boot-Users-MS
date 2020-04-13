@@ -1,5 +1,6 @@
 package com.learn.users.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -34,10 +35,11 @@ public class Order implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date deliveredOn;
 
-    @Column(nullable = false)
-    private Long bookId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="bookId")
+    private Book book;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId", nullable = false, unique = true)
     private User user;
 }

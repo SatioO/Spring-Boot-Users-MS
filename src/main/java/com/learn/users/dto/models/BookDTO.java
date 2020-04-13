@@ -7,7 +7,9 @@ import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Accessors(chain = true)
@@ -27,5 +29,4 @@ public class BookDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date publishedOn = new Date();
-
 }

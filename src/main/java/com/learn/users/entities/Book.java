@@ -31,8 +31,4 @@ public class Book implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date publishedOn;
-
-    @OneToMany
-    @JoinColumn(name = "bookId")
-    private List<Order> orders;
 }
