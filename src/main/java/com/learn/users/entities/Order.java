@@ -36,10 +36,11 @@ public class Order implements Serializable {
     private Date deliveredOn;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="bookId")
+    @JoinColumn(name="bookId", nullable = false)
     private Book book;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", nullable = false, unique = true)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
+    
 }

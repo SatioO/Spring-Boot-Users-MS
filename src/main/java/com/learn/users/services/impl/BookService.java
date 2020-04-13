@@ -6,28 +6,27 @@ import com.learn.users.entities.Book;
 import com.learn.users.exceptions.BookNotFoundException;
 import com.learn.users.repositories.BookRepository;
 import com.learn.users.services.IBookService;
+
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Service
 public class BookService implements IBookService {
     private BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
-
     @Override
     public List<BookDTO> getAllBooks() {
-        List<BookDTO> books = bookRepository.findAll().stream().map(BookMapper::toBookDTO).collect(Collectors.toList());
-        return books;
+        return bookRepository.findAll().stream().map(BookMapper::toBookDTO).collect(Collectors.toList());
     }
 
     @Override
     public BookDTO getBookById(Long id) throws BookNotFoundException {
-        Book book = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book not found: " + id));
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new BookNotFoundException("Book not found: " + id));
         return BookMapper.toBookDTO(book);
     }
 

@@ -13,13 +13,15 @@ import com.learn.users.repositories.BookRepository;
 import com.learn.users.repositories.OrderRepository;
 import com.learn.users.repositories.UserRepository;
 import com.learn.users.services.IOrderService;
-import lombok.Data;
+
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-@Data
+@AllArgsConstructor
 @Service
 public class OrderService implements IOrderService {
     private final OrderRepository orderRepository;
@@ -30,21 +32,24 @@ public class OrderService implements IOrderService {
         return orderRepository.findAll()
                 .stream()
                 .map(order -> OrderMapper.toOrderDTO(order)
-                        .setUser(UserMapper.toUserDTO(order.getUser()))
-                        .setBook(BookMapper.toBookDTO(order.getBook()))
+                        /** CHECK LAZY BEHAVIOR OF MAPPING **/
+//                        .setUser(UserMapper.toUserDTO(order.getUser()))
+//                        .setBook(BookMapper.toBookDTO(order.getBook()))
                 )
                 .collect(Collectors.toList());
     }
 
     @Override
     public OrderDTO createNewOrder(Long userId, Long bookId, OrderDTO order) throws UserNotFoundException, BookNotFoundException{
-        Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new BookNotFoundException("Book not found" + bookId));
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found: " + userId));
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new BookNotFoundException("Book not found" + bookId));
 
-        Order orderEntity = OrderMapper.toOrderEntity(order)
-                .setBook(book).setUser(user);
+        Order orderEntity = OrderMapper
+                .toOrderEntity(order)
+                .setBook(book)
+                .setUser(user);
 
         return OrderMapper.toOrderDTO(orderRepository.save(orderEntity));
     }
