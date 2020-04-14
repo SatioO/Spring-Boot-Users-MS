@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.AllArgsConstructor;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,12 +19,17 @@ public class Packages {
 
     @GetMapping
     public List<PackageDTO> findPackages() {
-        return packageService.getAllRoles();
+        return packageService.getPackages();
+    }
+
+    @GetMapping("/{id}")
+    public PackageDTO findPackages(@PathVariable @NotNull Long packageId) {
+        return packageService.getPackage(packageId);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public PackageDTO createPackage(@RequestBody @Valid PackageDTO packageDTO) {
-        return packageService.createRole(packageDTO);
+        return packageService.createPackage(packageDTO);
     }
 }

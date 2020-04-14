@@ -32,4 +32,8 @@ public class User  {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "packageId")
+    private Package aPackage;
 }

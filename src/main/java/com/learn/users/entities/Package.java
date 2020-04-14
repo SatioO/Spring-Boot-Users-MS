@@ -16,4 +16,5 @@ public class Package {
 
     @Column
     private String name;
+
 }

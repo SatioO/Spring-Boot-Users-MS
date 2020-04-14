@@ -1,6 +1,8 @@
 package com.learn.users.services.impl;
 
+import com.learn.users.dto.mappers.PackageMapper;
 import com.learn.users.dto.mappers.UserMapper;
+import com.learn.users.dto.models.PackageDTO;
 import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.User;
 import com.learn.users.exceptions.UserNotFoundException;
@@ -33,7 +35,13 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserDTO createUser(UserDTO user) {
-        return UserMapper.toUserDTO(userRepository.save(UserMapper.toUserEntity(user)));
+    public UserDTO createUser(UserDTO user, PackageDTO aPackage) {
+        return UserMapper.toUserDTO(
+            userRepository.save(
+                    UserMapper.toUserEntity(user).setAPackage(
+                            PackageMapper.toPackageEntity(aPackage)
+                    )
+            )
+        );
     }
 }
