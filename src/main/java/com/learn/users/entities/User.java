@@ -35,5 +35,5 @@ public class User  {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "package_id", nullable = false)
-    private Package aPackage;
+    private Package packageFk;
 }

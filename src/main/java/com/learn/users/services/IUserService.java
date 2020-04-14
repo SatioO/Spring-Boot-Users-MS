@@ -11,5 +11,7 @@ public interface IUserService {
 
     UserDTO getUserById(Long id) throws UserNotFoundException;
 
+    List<UserDTO> getUsersByPackageId(Long packageId);
+
     UserDTO createUser(UserDTO user, PackageDTO packageDTO);
 }

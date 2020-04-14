@@ -5,6 +5,7 @@ import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.PackageDTO;
 import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.User;
+import com.learn.users.exceptions.PackageNotFoundException;
 import com.learn.users.exceptions.UserNotFoundException;
 import com.learn.users.repositories.UserRepository;
 import com.learn.users.services.IUserService;
@@ -36,11 +37,19 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserDTO createUser(UserDTO user, PackageDTO aPackage) {
+    public List<UserDTO> getUsersByPackageId(Long packageId) throws PackageNotFoundException {
+        List<User> users = userRepository.findUsersByPackageFk(packageId)
+                .orElseThrow(() -> new UserNotFoundException("Invalid package id : " + packageId));
+        System.out.println(users);
+        return users.stream().map(UserMapper::toUserDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public UserDTO createUser(UserDTO user, PackageDTO packageGroup) {
         return UserMapper.toUserDTO(
             userRepository.save(
-                    UserMapper.toUserEntity(user).setAPackage(
-                            PackageMapper.toPackageEntity(aPackage)
+                    UserMapper.toUserEntity(user).setPackageFk(
+                            PackageMapper.toPackageEntity(packageGroup)
                     )
             )
         );

@@ -29,7 +29,7 @@ public class Packages {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PackageDTO createPackage(@RequestBody @Valid PackageDTO packageDTO) {
-        return packageService.createPackage(packageDTO);
+    public PackageDTO createPackage(@RequestBody @Valid PackageDTO packageGroup) {
+        return packageService.createPackage(packageGroup);
     }
 }

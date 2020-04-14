@@ -7,6 +7,7 @@ import com.learn.users.dto.models.BookDTO;
 import com.learn.users.dto.models.OrderDTO;
 import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.Order;
+import com.learn.users.exceptions.BookNotFoundException;
 import com.learn.users.repositories.OrderRepository;
 import com.learn.users.services.IOrderService;
 
@@ -33,8 +34,9 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<OrderDTO> getOrdersByBookId(Long bookId) {
+    public List<OrderDTO> getOrdersByBookId(Long bookId) throws BookNotFoundException {
         return orderRepository.findOrdersByBookId(bookId)
+                .orElseThrow(() -> new BookNotFoundException("Book not found: " + bookId))
                 .stream()
                 .map(OrderMapper::toOrderDTO)
                 .collect(Collectors.toList()

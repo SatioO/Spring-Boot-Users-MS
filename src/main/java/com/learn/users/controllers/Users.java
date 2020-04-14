@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @AllArgsConstructor
@@ -25,14 +24,19 @@ public class Users {
     }
 
     @GetMapping(path = "/{id}")
-    public UserDTO getUserById(@NotNull @PathVariable Long id) {
+    public UserDTO getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
+    }
+
+    @GetMapping(path="/package/{packageId}")
+    public List<UserDTO> getUsersByPackageId(@PathVariable Long packageId) {
+        return userService.getUsersByPackageId(packageId);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO createUser(@RequestParam Long packageId, @RequestBody @Valid UserDTO customer) {
-        PackageDTO aPackage = packageService.getPackage(packageId);
-        return userService.createUser(customer, aPackage);
+        PackageDTO packageFk = packageService.getPackage(packageId);
+        return userService.createUser(customer, packageFk);
     }
 }
