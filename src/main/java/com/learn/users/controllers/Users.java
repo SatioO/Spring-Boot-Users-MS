@@ -1,8 +1,8 @@
 package com.learn.users.controllers;
 
-import com.learn.users.dto.models.PackageDTO;
+import com.learn.users.dto.models.BundleDTO;
 import com.learn.users.dto.models.UserDTO;
-import com.learn.users.services.IPackageService;
+import com.learn.users.services.IBundleService;
 import com.learn.users.services.IUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping(path = "users")
 public class Users {
     private final IUserService userService;
-    private final IPackageService packageService;
+    private final IBundleService packageService;
 
     @GetMapping
     public List<UserDTO> getUsers() {
@@ -28,15 +28,15 @@ public class Users {
         return userService.getUserById(id);
     }
 
-    @GetMapping(path="/package/{packageId}")
-    public List<UserDTO> getUsersByPackageId(@PathVariable Long packageId) {
-        return userService.getUsersByPackageId(packageId);
+    @GetMapping(path="/bundle/{bundleId}")
+    public List<UserDTO> getUsersByBundleId(@PathVariable Long bundleId) {
+        return userService.getUsersByBundleId(bundleId);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO createUser(@RequestParam Long packageId, @RequestBody @Valid UserDTO customer) {
-        PackageDTO packageFk = packageService.getPackage(packageId);
-        return userService.createUser(customer, packageFk);
+    public UserDTO createUser(@RequestParam Long bundleId, @RequestBody @Valid UserDTO customer) {
+        BundleDTO bundle = packageService.getBundleById(bundleId);
+        return userService.createUser(customer, bundle);
     }
 }

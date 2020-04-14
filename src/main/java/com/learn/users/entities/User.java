@@ -34,6 +34,6 @@ public class User  {
     private List<Order> orders;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "package_id", nullable = false)
-    private Package packageFk;
+    @JoinColumn(name = "bundleId", nullable = false)
+    private Bundle bundle;
 }

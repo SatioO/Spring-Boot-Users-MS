@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Data
 @Accessors(chain = true)
-public class PackageDTO {
+public class BundleDTO {
     private Long id;
 
     @NotEmpty

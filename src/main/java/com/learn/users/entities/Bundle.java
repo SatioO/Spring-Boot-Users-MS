@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Accessors(chain = true)
 @Entity
 @Table(name = "packages")
-public class Package {
+public class Bundle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false, updatable = false)

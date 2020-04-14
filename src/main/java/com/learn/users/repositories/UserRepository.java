@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<List<User>> findUsersByPackageFk(Long packageId);
+    Optional<List<User>> findUsersByBundleId(Long bundleId);
 }

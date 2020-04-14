@@ -1,6 +1,6 @@
 package com.learn.users.services;
 
-import com.learn.users.dto.models.PackageDTO;
+import com.learn.users.dto.models.BundleDTO;
 import com.learn.users.dto.models.UserDTO;
 import com.learn.users.exceptions.UserNotFoundException;
 
@@ -11,7 +11,7 @@ public interface IUserService {
 
     UserDTO getUserById(Long id) throws UserNotFoundException;
 
-    List<UserDTO> getUsersByPackageId(Long packageId);
+    List<UserDTO> getUsersByBundleId(Long bundleId);
 
-    UserDTO createUser(UserDTO user, PackageDTO packageDTO);
+    UserDTO createUser(UserDTO user, BundleDTO bundle);
 }

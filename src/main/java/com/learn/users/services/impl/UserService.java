@@ -1,11 +1,11 @@
 package com.learn.users.services.impl;
 
-import com.learn.users.dto.mappers.PackageMapper;
+import com.learn.users.dto.mappers.BundleMapper;
 import com.learn.users.dto.mappers.UserMapper;
-import com.learn.users.dto.models.PackageDTO;
+import com.learn.users.dto.models.BundleDTO;
 import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.User;
-import com.learn.users.exceptions.PackageNotFoundException;
+import com.learn.users.exceptions.BundleNotFoundException;
 import com.learn.users.exceptions.UserNotFoundException;
 import com.learn.users.repositories.UserRepository;
 import com.learn.users.services.IUserService;
@@ -37,19 +37,19 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<UserDTO> getUsersByPackageId(Long packageId) throws PackageNotFoundException {
-        List<User> users = userRepository.findUsersByPackageFk(packageId)
-                .orElseThrow(() -> new UserNotFoundException("Invalid package id : " + packageId));
-        System.out.println(users);
-        return users.stream().map(UserMapper::toUserDTO).collect(Collectors.toList());
+    public List<UserDTO> getUsersByBundleId(Long bundleId) throws BundleNotFoundException {
+        System.out.println(bundleId);
+        return userRepository.findUsersByBundleId(bundleId)
+                .orElseThrow(() -> new UserNotFoundException("Invalid bundle id : " + bundleId))
+                .stream().map(UserMapper::toUserDTO).collect(Collectors.toList());
     }
 
     @Override
-    public UserDTO createUser(UserDTO user, PackageDTO packageGroup) {
+    public UserDTO createUser(UserDTO user, BundleDTO bundle) {
         return UserMapper.toUserDTO(
             userRepository.save(
-                    UserMapper.toUserEntity(user).setPackageFk(
-                            PackageMapper.toPackageEntity(packageGroup)
+                    UserMapper.toUserEntity(user).setBundle(
+                            BundleMapper.toBundleEntity(bundle)
                     )
             )
         );
