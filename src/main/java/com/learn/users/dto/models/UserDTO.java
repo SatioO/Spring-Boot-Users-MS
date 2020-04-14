@@ -1,6 +1,5 @@
 package com.learn.users.dto.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.learn.users.enums.GenderType;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -10,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-@Accessors(chain = true)
+@Accessors(chain = true, fluent = true)
 public class UserDTO {
     private Long id;
 

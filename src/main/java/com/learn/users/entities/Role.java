@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 
 @Data
-@Accessors(chain = true)
+@Accessors(chain = true, fluent = true)
 @Entity
 @Table(name = "roles")
 public class Role {

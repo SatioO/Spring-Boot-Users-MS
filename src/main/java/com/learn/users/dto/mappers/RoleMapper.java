@@ -5,10 +5,10 @@ import com.learn.users.entities.Role;
 
 public class RoleMapper {
     public static RoleDTO toRoleDTO(Role role){
-        return new RoleDTO().setRole(role.getRole());
+        return new RoleDTO().role(role.role());
     }
 
     public static Role toRoleEntity(RoleDTO role){
-        return new Role().setId(role.getId()).setRole(role.getRole());
+        return new Role().id(role.id()).role(role.role());
     }
 }

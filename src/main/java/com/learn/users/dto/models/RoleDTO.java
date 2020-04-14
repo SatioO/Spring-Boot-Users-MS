@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 import javax.validation.constraints.NotNull;
 
 @Data
-@Accessors(chain = true)
+@Accessors(chain = true, fluent = true)
 public class RoleDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;

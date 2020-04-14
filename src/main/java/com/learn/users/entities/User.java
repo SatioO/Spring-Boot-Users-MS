@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-@Accessors(chain = true)
+@Accessors(chain = true, fluent = true)
 @Entity
 @Table(name="users")
 public class User implements Serializable {
@@ -34,10 +34,4 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
-
-    public Order add(Order order) {
-        this.orders.add(order);
-        order.setUser(this);
-        return order;
-    }
 }

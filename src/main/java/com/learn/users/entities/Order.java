@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@Accessors(chain = true)
+@Accessors(chain = true, fluent = true)
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {

@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@Accessors(chain = true)
+@Accessors(chain = true, fluent = true)
 @Entity
 @Table(name = "books")
 public class Book implements Serializable {
@@ -17,17 +17,17 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false, updatable = false)
-    private Long id;
+    Long id;
 
     @Column(nullable = false)
-    private String name;
+    String name;
 
     @Column
-    private String description;
+    String description;
 
     @Column(nullable = false)
-    private int price;
+    int price;
 
     @Temporal(TemporalType.DATE)
-    private Date publishedOn;
+    Date publishedOn;
 }
