@@ -1,5 +1,6 @@
 package com.learn.users.controllers;
 
+import com.learn.users.repositories.OrderRepository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
@@ -22,10 +23,16 @@ public class Orders {
     private final IOrderService orderService;
     private final IUserService userService;
     private final IBookService bookService;
+    private final OrderRepository orderRepository;
 
     @GetMapping
     public List<OrderDTO> getOrders() {
         return orderService.getAllOrders();
+    }
+
+    @GetMapping("/book/{bookId}")
+    public List<OrderDTO> getOrderByBookId(@PathVariable Long bookId) {
+        return orderService.getOrdersByBookId(bookId);
     }
 
     @PostMapping

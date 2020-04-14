@@ -33,6 +33,15 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public List<OrderDTO> getOrdersByBookId(Long bookId) {
+        return orderRepository.findOrdersByBookId(bookId)
+                .stream()
+                .map(OrderMapper::toOrderDTO)
+                .collect(Collectors.toList()
+                );
+    }
+
+    @Override
     public OrderDTO createNewOrder(UserDTO user, BookDTO book, OrderDTO order) {
         Order orderEntity = OrderMapper
                 .toOrderEntity(order)

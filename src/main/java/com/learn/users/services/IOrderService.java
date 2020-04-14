@@ -9,5 +9,7 @@ import java.util.List;
 public interface IOrderService {
     List<OrderDTO> getAllOrders();
 
+    List<OrderDTO> getOrdersByBookId(Long bookId);
+
     OrderDTO createNewOrder(UserDTO user, BookDTO book, OrderDTO order) throws UserNotFoundException;
 }

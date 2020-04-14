@@ -22,7 +22,8 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserDTO> getAllUsers() {
-        return userRepository.findAll().stream()
+        return userRepository.findAll()
+                .stream()
                 .map(UserMapper::toUserDTO)
                 .collect(Collectors.toList());
     }
@@ -44,4 +45,6 @@ public class UserService implements IUserService {
             )
         );
     }
+
+
 }
