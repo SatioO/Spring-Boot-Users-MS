@@ -6,19 +6,19 @@ import com.learn.users.entities.Book;
 public class BookMapper {
     public static BookDTO toBookDTO(Book book) {
         return new BookDTO()
-                .id(book.id())
-                .name(book.name())
-                .description(book.description())
-                .price(book.price())
-                .publishedOn(book.publishedOn());
+                .setId(book.getId())
+                .setName(book.getName())
+                .setDescription(book.getDescription())
+                .setPrice(book.getPrice())
+                .setPublishedOn(book.getPublishedOn());
     }
 
     public static Book toBookEntity(BookDTO book) {
         return new Book()
-                .id(book.id())
-                .name(book.name())
-                .description(book.description())
-                .price(book.price())
-                .publishedOn(book.publishedOn());
+                .setId(book.getId())
+                .setName(book.getName())
+                .setDescription(book.getDescription())
+                .setPrice(book.getPrice())
+                .setPublishedOn(book.getPublishedOn());
     }
 }

@@ -36,8 +36,8 @@ public class OrderService implements IOrderService {
     public OrderDTO createNewOrder(UserDTO user, BookDTO book, OrderDTO order) {
         Order orderEntity = OrderMapper
                 .toOrderEntity(order)
-                .user(UserMapper.toUserEntity(user))
-                .book(BookMapper.toBookEntity(book));
+                .setUser(UserMapper.toUserEntity(user))
+                .setBook(BookMapper.toBookEntity(book));
 
         return OrderMapper.toOrderDTO(orderRepository.save(orderEntity));
     }

@@ -5,7 +5,7 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 
 @Data
-@Accessors(chain = true, fluent = true)
+@Accessors(chain = true)
 @Entity
 @Table(name = "packages")
 public class Package {

@@ -6,19 +6,19 @@ import com.learn.users.entities.User;
 public class UserMapper {
     public static UserDTO toUserDTO(User user) {
         return new UserDTO()
-                .id(user.id())
-                .firstName(user.firstName())
-                .lastName(user.lastName())
-                .gender(user.gender())
-                .email(user.email());
+                .setId(user.getId())
+                .setFirstName(user.getFirstName())
+                .setLastName(user.getLastName())
+                .setGender(user.getGender())
+                .setEmail(user.getEmail());
     }
 
     public static User toUserEntity(UserDTO user) {
         return new User()
-                .id(user.id())
-                .firstName(user.firstName())
-                .lastName(user.lastName())
-                .gender(user.gender())
-                .email(user.email());
+                .setId(user.getId())
+                .setFirstName(user.getFirstName())
+                .setLastName(user.getLastName())
+                .setGender(user.getGender())
+                .setEmail(user.getEmail());
     }
 }

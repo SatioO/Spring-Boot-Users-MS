@@ -4,15 +4,13 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@Accessors(chain = true, fluent = true)
+@Accessors(chain = true)
 @Entity
 @Table(name = "books")
-public class Book implements Serializable {
-    private static final long serialVersionUID = 9188451047948590951L;
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

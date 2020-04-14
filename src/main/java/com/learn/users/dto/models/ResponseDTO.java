@@ -4,7 +4,8 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 @ToString
-@Getter @Setter @Accessors(chain = true)
+@Data
+@Accessors(chain = true)
 public class ResponseDTO<T> {
     private String statusCode;
     private T data;

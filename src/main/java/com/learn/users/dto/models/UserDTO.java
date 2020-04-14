@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-@Accessors(chain = true, fluent = true)
+@Accessors(chain = true)
 public class UserDTO {
     private Long id;
 

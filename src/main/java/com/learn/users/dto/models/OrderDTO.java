@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
-@Accessors(chain = true, fluent = true)
+@Accessors(chain = true)
 public class OrderDTO {
     private Long id;
 

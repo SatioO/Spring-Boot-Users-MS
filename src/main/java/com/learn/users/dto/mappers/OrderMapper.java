@@ -6,21 +6,21 @@ import com.learn.users.entities.Order;
 public class OrderMapper {
     public static OrderDTO toOrderDTO(Order order) {
         return new OrderDTO()
-                .id(order.id())
-                .price(order.price())
-                .couponCode(order.couponCode())
-                .deliveredOn(order.deliveredOn())
-                .orderedOn(order.orderedOn())
-                .quantity(order.quantity());
+                .setId(order.getId())
+                .setPrice(order.getPrice())
+                .setCouponCode(order.getCouponCode())
+                .setDeliveredOn(order.getDeliveredOn())
+                .setOrderedOn(order.getOrderedOn())
+                .setQuantity(order.getQuantity());
     }
 
     public static Order toOrderEntity(OrderDTO order) {
         return new Order()
-                .id(order.id())
-                .price(order.price())
-                .couponCode(order.couponCode())
-                .deliveredOn(order.deliveredOn())
-                .orderedOn(order.orderedOn())
-                .quantity(order.quantity());
+                .setId(order.getId())
+                .setPrice(order.getPrice())
+                .setCouponCode(order.getCouponCode())
+                .setDeliveredOn(order.getDeliveredOn())
+                .setOrderedOn(order.getOrderedOn())
+                .setQuantity(order.getQuantity());
     }
 }
