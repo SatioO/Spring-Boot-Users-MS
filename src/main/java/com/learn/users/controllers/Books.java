@@ -16,18 +16,18 @@ public class Books {
     private final IBookService bookService;
 
     @GetMapping
-    public List<BookDTO> findAll() {
+    public List<BookDTO> getBooks() {
         return bookService.getAllBooks();
     }
 
     @GetMapping(path = "/{id}")
-    public BookDTO findById(@PathVariable Long id) {
+    public BookDTO getBookById(@PathVariable Long id) {
         return bookService.getBookById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDTO save(@RequestBody @Valid BookDTO book) {
+    public BookDTO createBook(@RequestBody @Valid BookDTO book) {
 
         return bookService.createBook(book);
     }

@@ -24,13 +24,13 @@ public class Orders {
     private final IBookService bookService;
 
     @GetMapping
-    public List<OrderDTO> findAll() {
+    public List<OrderDTO> getOrders() {
         return orderService.getAllOrders();
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public OrderDTO save(
+    public OrderDTO createOrder(
             @RequestParam("userId") Long userId,
             @RequestParam("bookId") Long bookId,
             @RequestBody @Valid OrderDTO order) {

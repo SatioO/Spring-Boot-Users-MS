@@ -17,17 +17,17 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false, updatable = false)
-    Long id;
+    private Long id;
 
     @Column(nullable = false)
-    String name;
+    private String name;
 
     @Column
-    String description;
+    private String description;
 
     @Column(nullable = false)
-    int price;
+    private int price;
 
     @Temporal(TemporalType.DATE)
-    Date publishedOn;
+    private Date publishedOn;
 }

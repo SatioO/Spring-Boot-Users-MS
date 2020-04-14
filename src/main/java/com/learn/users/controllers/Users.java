@@ -16,18 +16,18 @@ public class Users {
     private final IUserService userService;
 
     @GetMapping(path = "/{id}")
-    public UserDTO findById(@PathVariable Long id) {
+    public UserDTO getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @GetMapping
-    public List<UserDTO> findAll() {
+    public List<UserDTO> getUsers() {
         return userService.getAllUsers();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO save(@RequestBody @Valid UserDTO customer) {
+    public UserDTO createUser(@RequestBody @Valid UserDTO customer) {
         return userService.createUser(customer);
     }
 }

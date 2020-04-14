@@ -13,18 +13,18 @@ import java.util.Date;
 @Accessors(chain = true, fluent = true)
 public class BookDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    Long id;
+    private Long id;
 
     @NotEmpty
-    String name;
+    private String name;
 
     @NotEmpty
-    String description;
+    private String description;
 
     @NotNull
-    int price;
+    private int price;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @JsonFormat(pattern="dd-MM-yyyy")
-    Date publishedOn = new Date();
+    private Date publishedOn = new Date();
 }
