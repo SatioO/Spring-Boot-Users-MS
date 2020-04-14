@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping(path = "/books")
+@AllArgsConstructor
 public class Books {
     private final IBookService bookService;
 
@@ -28,7 +28,6 @@ public class Books {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public BookDTO createBook(@RequestBody @Valid BookDTO book) {
-
         return bookService.createBook(book);
     }
 }

@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping(path = "users")
+@AllArgsConstructor
 public class Users {
     private final IUserService userService;
-    private final IBundleService packageService;
+    private final IBundleService bundleService;
 
     @GetMapping
     public List<UserDTO> getUsers() {
@@ -36,7 +36,7 @@ public class Users {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO createUser(@RequestParam Long bundleId, @RequestBody @Valid UserDTO customer) {
-        BundleDTO bundle = packageService.getBundleById(bundleId);
+        BundleDTO bundle = bundleService.getBundleById(bundleId);
         return userService.createUser(customer, bundle);
     }
 }

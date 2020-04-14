@@ -11,9 +11,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping(path = "bundles")
+@AllArgsConstructor
 public class Bundles {
     private final IBundleService bundleService;
 

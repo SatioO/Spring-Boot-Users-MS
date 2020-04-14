@@ -16,9 +16,9 @@ import javax.validation.Valid;
 
 import java.util.List;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping(path = "orders")
+@AllArgsConstructor
 public class Orders {
     private final IOrderService orderService;
     private final IUserService userService;
