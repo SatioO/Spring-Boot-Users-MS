@@ -29,7 +29,7 @@ public class Book {
     @Temporal(TemporalType.DATE)
     private Date publishedOn;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name="authorId", nullable = false)
     private User author;
 }

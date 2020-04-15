@@ -7,7 +7,7 @@ public class OrderMapper {
     public static OrderDTO toOrderDTO(Order order) {
         return new OrderDTO()
                 .setId(order.getId())
-                .setPrice(order.getPrice())
+                .setPrice(order.getTotalPrice())
                 .setCouponCode(order.getCouponCode())
                 .setDeliveredOn(order.getDeliveredOn())
                 .setOrderedOn(order.getOrderedOn())
@@ -17,7 +17,7 @@ public class OrderMapper {
     public static Order toOrderEntity(OrderDTO order) {
         return new Order()
                 .setId(order.getId())
-                .setPrice(order.getPrice())
+                .setTotalPrice(order.getPrice())
                 .setCouponCode(order.getCouponCode())
                 .setDeliveredOn(order.getDeliveredOn())
                 .setOrderedOn(order.getOrderedOn())

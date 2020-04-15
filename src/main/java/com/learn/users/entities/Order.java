@@ -17,7 +17,7 @@ public class Order {
     private Long id;
 
     @Column(nullable = false)
-    private int price;
+    private int totalPrice;
 
     @Column(nullable = false)
     private int quantity;

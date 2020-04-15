@@ -10,7 +10,8 @@ public class BookMapper {
                 .setName(book.getName())
                 .setDescription(book.getDescription())
                 .setPrice(book.getPrice())
-                .setPublishedOn(book.getPublishedOn());
+                .setPublishedOn(book.getPublishedOn())
+                .setAuthor(UserMapper.toUserDTO(book.getAuthor()));
     }
 
     public static Book toBookEntity(BookDTO book) {
@@ -19,6 +20,7 @@ public class BookMapper {
                 .setName(book.getName())
                 .setDescription(book.getDescription())
                 .setPrice(book.getPrice())
-                .setPublishedOn(book.getPublishedOn());
+                .setPublishedOn(book.getPublishedOn())
+                .setAuthor(UserMapper.toUserEntity(book.getAuthor()));
     }
 }
