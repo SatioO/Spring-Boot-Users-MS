@@ -84,8 +84,8 @@ public class DemoApplication {
 				.setPrice(2000)
 				.setPublishedOn(new Date());
 
-		book1.setUser(user3);
-		book2.setUser(user4);
+		book1.setAuthor(user3);
+		book2.setAuthor(user4);
 
 		bundleRepository.saveAll(Arrays.asList(bundle1, bundle2));
 		userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5));

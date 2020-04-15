@@ -32,7 +32,6 @@ public class Books {
     @ResponseStatus(HttpStatus.CREATED)
     public BookDTO createBook(@PathVariable Long authorId, @RequestBody @Valid BookDTO book) {
         UserDTO author = userService.getUserById(authorId);
-
         return bookService.createBook(book, author);
     }
 }

@@ -12,7 +12,6 @@ import java.util.Date;
 @Data
 @Accessors(chain = true)
 public class BookDTO {
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     @NotEmpty

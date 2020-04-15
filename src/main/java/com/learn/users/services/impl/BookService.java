@@ -36,7 +36,7 @@ public class BookService implements IBookService {
     public BookDTO createBook(BookDTO book, UserDTO author) {
         Book bookEntity = BookMapper
                 .toBookEntity(book)
-                .setUser(UserMapper.toUserEntity(author));
+                .setAuthor(UserMapper.toUserEntity(author));
 
         return BookMapper.toBookDTO(bookRepository.save(bookEntity));
     }
