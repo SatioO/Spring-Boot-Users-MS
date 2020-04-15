@@ -27,11 +27,12 @@ public class UserService implements IUserService {
         return userRepository.findAll()
                 .stream()
                 .map(user -> UserMapper.toUserDTO(user)
-                        .setBooks(user.getBooks()
-                                .stream()
-                                .map(BookMapper::toBookDTO)
-                                .collect(Collectors.toList())
-                        )
+                        /* FETCH MODE SUB-SELECT EXAMPLE */
+//                        .setBooks(user.getBooks()
+//                                .stream()
+//                                .map(BookMapper::toBookDTO)
+//                                .collect(Collectors.toList())
+//                        )
                 )
                 .collect(Collectors.toList());
     }
@@ -45,7 +46,6 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserDTO> getUsersByBundleId(Long bundleId) throws BundleNotFoundException {
-        System.out.println(bundleId);
         return userRepository.findUsersByBundleId(bundleId)
                 .orElseThrow(() -> new UserNotFoundException("Invalid bundle id : " + bundleId))
                 .stream().map(UserMapper::toUserDTO).collect(Collectors.toList());
