@@ -1,10 +1,11 @@
 package com.learn.users.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
-import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,8 +23,7 @@ public class Department {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy="department",cascade=CascadeType.PERSIST)
-    @Fetch(value=FetchMode.SELECT)
-    @BatchSize(size = 3)
+    @OneToMany(mappedBy="department", cascade={CascadeType.PERSIST})
+    @Fetch(value=FetchMode.SUBSELECT)
     private List<Employee> employees = new ArrayList<>();
 }

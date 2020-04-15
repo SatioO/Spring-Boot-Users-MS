@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 interface EmployeeRepository extends JpaRepository<Employee, Long> {
-
+	List<Employee> findByDepartmentId(Long departmentId);
 }
 
 @Repository
-interface DepartmentRepository extends JpaRepository<Department, Long> {
-
-}
+interface DepartmentRepository extends JpaRepository<Department, Long> { }
 
 @RestController
 @RequestMapping("employees")
@@ -44,12 +44,12 @@ class Departments {
 
 	@GetMapping
 	public List<Department> getDepartments() {
-		List<Department> departments =departmentRepository.findAll();
+		List<Department> departments = departmentRepository.findAll();
 		System.out.println("Fetched Departments size:" + departments.size());
-		for (Department department : departments) {
-			System.out.println("Department ID:"+department.getId());
-			System.out.println("Employees count:" + department.getEmployees().size());
-		}
+//		for (Department department : departments) {
+//			System.out.println("Department ID:"+department.getId());
+//			System.out.println("Employees count:" + department.getEmployees().size());
+//		}
 		return departments;
 	}
 }
@@ -68,7 +68,7 @@ public class DemoApplication {
 
 	@Bean
 	void CommandLineRunner() {
-		/** CREATING EMPLOYEES s**/
+		/* CREATING EMPLOYEES */
 		Employee employee1 = new Employee();
 		employee1.setName("Sean Murphy");
 
@@ -84,7 +84,7 @@ public class DemoApplication {
 		Employee employee5 = new Employee();
 		employee5.setName("Eric Miller");
 
-		/** CREATING DEPARTMENTS **/
+		/* CREATING DEPARTMENTS */
 		Department department1 = new Department();
 		department1.setName("IT");
 
@@ -94,29 +94,20 @@ public class DemoApplication {
 		Department department3 = new Department();
 		department3.setName("HR");
 
-		/** ADDING EMPLOYESS TO DEPARTMENT **/
-//		department1.getEmployees().add(employee1);
+		/* ADDING EMPLOYEES TO DEPARTMENT */
+		department1.getEmployees().add(employee1);
 		employee1.setDepartment(department1);
-//		department1.getEmployees().add(employee2);
+		department1.getEmployees().add(employee2);
 		employee2.setDepartment(department1);
 
-//		department2.getEmployees().add(employee3);
+		department2.getEmployees().add(employee3);
 		employee3.setDepartment(department2);
-//		department2.getEmployees().add(employee4);
+		department2.getEmployees().add(employee4);
 		employee4.setDepartment(department2);
 
-//		department3.getEmployees().add(employee5);
+		department3.getEmployees().add(employee5);
 		employee5.setDepartment(department3);
 
-		departmentRepository.save(department1);
-		departmentRepository.save(department2);
-		departmentRepository.save(department3);
-
-		employeeRepository.save(employee1);
-		employeeRepository.save(employee2);
-		employeeRepository.save(employee3);
-		employeeRepository.save(employee4);
-		employeeRepository.save(employee5);
-
+		departmentRepository.saveAll(Arrays.asList(department1, department2, department3));
 	}
 }
