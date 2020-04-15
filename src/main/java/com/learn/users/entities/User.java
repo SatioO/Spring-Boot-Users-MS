@@ -3,6 +3,8 @@ package com.learn.users.entities;
 import com.learn.users.enums.GenderType;
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -38,5 +40,6 @@ public class User  {
     private Bundle bundle;
 
     @OneToMany(mappedBy = "user")
+    @Fetch(FetchMode.SUBSELECT)
     private List<Book> books;
 }
