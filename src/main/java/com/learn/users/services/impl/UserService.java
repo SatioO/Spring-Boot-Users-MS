@@ -1,5 +1,6 @@
 package com.learn.users.services.impl;
 
+import com.learn.users.dto.mappers.BookMapper;
 import com.learn.users.dto.mappers.BundleMapper;
 import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.BundleDTO;
@@ -25,7 +26,13 @@ public class UserService implements IUserService {
     public List<UserDTO> getAllUsers() {
         return userRepository.findAll()
                 .stream()
-                .map(UserMapper::toUserDTO)
+                .map(user -> UserMapper.toUserDTO(user)
+                        .setBooks(user.getBooks()
+                                .stream()
+                                .map(BookMapper::toBookDTO)
+                                .collect(Collectors.toList())
+                        )
+                )
                 .collect(Collectors.toList());
     }
 

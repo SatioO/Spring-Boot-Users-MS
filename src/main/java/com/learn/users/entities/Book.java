@@ -28,4 +28,8 @@ public class Book {
 
     @Temporal(TemporalType.DATE)
     private Date publishedOn;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="userId", nullable = false)
+    private User user;
 }

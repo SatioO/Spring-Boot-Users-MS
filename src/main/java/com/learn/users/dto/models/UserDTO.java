@@ -1,5 +1,7 @@
 package com.learn.users.dto.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.learn.users.enums.GenderType;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -7,6 +9,7 @@ import lombok.experimental.Accessors;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @Accessors(chain = true)
@@ -25,4 +28,8 @@ public class UserDTO {
 
     @NotNull
     private GenderType gender;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<BookDTO> books;
 }

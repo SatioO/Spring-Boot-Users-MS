@@ -36,4 +36,7 @@ public class User  {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "bundleId", nullable = false)
     private Bundle bundle;
+
+    @OneToMany(mappedBy = "user")
+    private List<Book> books;
 }
