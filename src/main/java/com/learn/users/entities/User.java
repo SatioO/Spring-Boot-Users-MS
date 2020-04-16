@@ -39,7 +39,6 @@ public class User  {
     @JoinColumn(name = "bundleId", nullable = false)
     private Bundle bundle;
 
-    @OneToMany(mappedBy = "author")
-    @Fetch(FetchMode.SUBSELECT)
+    @ManyToMany(mappedBy = "authors")
     private List<Book> books;
 }

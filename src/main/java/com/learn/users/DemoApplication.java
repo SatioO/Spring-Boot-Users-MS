@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -84,8 +86,9 @@ public class DemoApplication {
 				.setPrice(2000)
 				.setPublishedOn(new Date());
 
-		book1.setAuthor(user3);
-		book2.setAuthor(user4);
+
+		book1.setAuthors(Stream.of(user1, user2).collect(Collectors.toSet()));
+		book2.setAuthors(Stream.of(user5, user3).collect(Collectors.toSet()));
 
 		bundleRepository.saveAll(Arrays.asList(bundle1, bundle2));
 		userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5));

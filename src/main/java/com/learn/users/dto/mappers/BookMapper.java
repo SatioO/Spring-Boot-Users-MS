@@ -3,6 +3,8 @@ package com.learn.users.dto.mappers;
 import com.learn.users.dto.models.BookDTO;
 import com.learn.users.entities.Book;
 
+import java.util.stream.Collectors;
+
 public class BookMapper {
     public static BookDTO toBookDTO(Book book) {
         return new BookDTO()
@@ -11,7 +13,8 @@ public class BookMapper {
                 .setDescription(book.getDescription())
                 .setPrice(book.getPrice())
                 .setPublishedOn(book.getPublishedOn())
-                .setAuthor(UserMapper.toUserDTO(book.getAuthor()));
+                .setAuthors(book.getAuthors().stream()
+                        .map(user -> user.getFirstName() + " " + user.getLastName()).collect(Collectors.toSet()));
     }
 
     public static Book toBookEntity(BookDTO book) {
@@ -20,7 +23,6 @@ public class BookMapper {
                 .setName(book.getName())
                 .setDescription(book.getDescription())
                 .setPrice(book.getPrice())
-                .setPublishedOn(book.getPublishedOn())
-                .setAuthor(UserMapper.toUserEntity(book.getAuthor()));
+                .setPublishedOn(book.getPublishedOn());
     }
 }

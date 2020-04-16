@@ -5,6 +5,7 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @Accessors(chain = true)
@@ -29,7 +30,10 @@ public class Book {
     @Temporal(TemporalType.DATE)
     private Date publishedOn;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name="authorId", nullable = false)
-    private User author;
+    @ManyToMany
+    @JoinTable(
+        name = "book_authors",
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> authors;
 }

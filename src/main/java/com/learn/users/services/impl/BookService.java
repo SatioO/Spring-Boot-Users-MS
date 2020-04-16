@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @AllArgsConstructor
 @Service
@@ -36,7 +37,7 @@ public class BookService implements IBookService {
     public BookDTO createBook(BookDTO book, UserDTO author) {
         Book bookEntity = BookMapper
                 .toBookEntity(book)
-                .setAuthor(UserMapper.toUserEntity(author));
+                .setAuthors(Stream.of(author).map(UserMapper::toUserEntity).collect(Collectors.toSet()));
 
         return BookMapper.toBookDTO(bookRepository.save(bookEntity));
     }
