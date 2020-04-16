@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @RestController
-@RequestMapping(path = "/books")
+@RequestMapping(path = "books")
 @AllArgsConstructor
 public class Books {
     private final IBookService bookService;
@@ -28,10 +29,10 @@ public class Books {
         return bookService.getBookById(id);
     }
 
-    @PostMapping("/author/{authorId}")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDTO createBook(@PathVariable Long authorId, @RequestBody @Valid BookDTO book) {
-        UserDTO author = userService.getUserById(authorId);
-        return bookService.createBook(book, author);
+    public BookDTO createBook(@RequestBody @Valid BookDTO book) {
+        System.out.println(book);
+        return null;
     }
 }

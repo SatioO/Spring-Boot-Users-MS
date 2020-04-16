@@ -29,6 +29,8 @@ public class BookDTO {
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date publishedOn = new Date();
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Set<String> authors;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Set<Long> authorIds;
+
+    private Set<UserDTO> authors;
 }
