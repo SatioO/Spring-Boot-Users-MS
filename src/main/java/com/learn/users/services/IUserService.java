@@ -6,6 +6,8 @@ import com.learn.users.exceptions.UserNotFoundException;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public interface IUserService {
     List<UserDTO> getAllUsers();
