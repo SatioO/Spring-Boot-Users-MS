@@ -32,7 +32,7 @@ public class Books {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public BookDTO createBook(@RequestBody @Valid BookDTO book) {
-        System.out.println(book);
-        return null;
+        Set<UserDTO> users = userService.getUsersByIds(book.getAuthorIds());
+        return bookService.createBook(book.setAuthors(users));
     }
 }

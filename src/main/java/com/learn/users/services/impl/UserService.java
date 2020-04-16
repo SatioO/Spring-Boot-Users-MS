@@ -45,6 +45,14 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public Set<UserDTO> getUsersByIds(Set<Long> userIds) {
+        return userRepository
+                .findAllById(userIds).stream()
+                .map(UserMapper::toUserDTO)
+                .collect(Collectors.toSet());
+    }
+
+    @Override
     public List<UserDTO> getUsersByBundleId(Long bundleId) throws BundleNotFoundException {
         return userRepository.findUsersByBundleId(bundleId)
                 .orElseThrow(() -> new UserNotFoundException("Invalid bundle id : " + bundleId))
@@ -61,6 +69,8 @@ public class UserService implements IUserService {
             )
         );
     }
+
+
 
 
 }

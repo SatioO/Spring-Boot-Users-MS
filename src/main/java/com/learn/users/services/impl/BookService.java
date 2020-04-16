@@ -34,11 +34,8 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public BookDTO createBook(BookDTO book, UserDTO author) {
-        Book bookEntity = BookMapper
-                .toBookEntity(book)
-                .setAuthors(Stream.of(author).map(UserMapper::toUserEntity).collect(Collectors.toSet()));
-
-        return BookMapper.toBookDTO(bookRepository.save(bookEntity));
+    public BookDTO createBook(BookDTO book) {
+        return BookMapper.toBookDTO(bookRepository.save(BookMapper
+                .toBookEntity(book)));
     }
 }

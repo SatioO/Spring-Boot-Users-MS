@@ -10,5 +10,5 @@ public interface IBookService {
 
     BookDTO getBookById(Long id) throws BookNotFoundException;
 
-    BookDTO createBook(BookDTO book, UserDTO author);
+    BookDTO createBook(BookDTO book);
 }
