@@ -39,6 +39,6 @@ public class User  {
     @JoinColumn(name = "bundleId", nullable = false)
     private Bundle bundle;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
     private List<Book> books;
 }

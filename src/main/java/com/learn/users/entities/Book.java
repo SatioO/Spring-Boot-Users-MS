@@ -2,6 +2,8 @@ package com.learn.users.entities;
 
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,7 +35,8 @@ public class Book {
     @ManyToMany
     @JoinTable(
         name = "book_authors",
-        joinColumns = @JoinColumn(name = "book_id"),
-        inverseJoinColumns = @JoinColumn(name = "user_id"))
+        joinColumns = { @JoinColumn(name = "book_id") },
+        inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    @Fetch(FetchMode.SUBSELECT)
     private Set<User> authors;
 }
