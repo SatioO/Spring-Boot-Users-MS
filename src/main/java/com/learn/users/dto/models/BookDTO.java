@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -33,4 +34,6 @@ public class BookDTO {
     private Set<Long> authorIds;
 
     private Set<UserDTO> authors;
+
+    private List<SectionDTO> sections;
 }

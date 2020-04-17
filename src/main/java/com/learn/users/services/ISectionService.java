@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ISectionService {
     List<SectionDTO> getSections();
+
     SectionDTO getSectionById(Long id) throws SectionNotFoundException;
+
     SectionDTO createSection(SectionDTO section);
 }

@@ -1,8 +1,10 @@
 package com.learn.users.services.impl;
 
 import com.learn.users.dto.mappers.BookMapper;
+import com.learn.users.dto.mappers.SectionMapper;
 import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.BookDTO;
+import com.learn.users.dto.models.SectionDTO;
 import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.Book;
 import com.learn.users.exceptions.BookNotFoundException;
@@ -39,5 +41,13 @@ public class BookService implements IBookService {
                 .toBookEntity(book)));
     }
 
-
+    @Override
+    public BookDTO attachSections(BookDTO book) {
+        return BookMapper.toBookDTO(bookRepository.save(
+                BookMapper.toBookEntity(book)
+                        .setSections(book.getSections()
+                                .stream()
+                                .map(SectionMapper::toSectionEntity)
+                                .collect(Collectors.toSet()))));
+    }
 }
