@@ -2,10 +2,12 @@ package com.learn.users;
 
 import com.learn.users.entities.Book;
 import com.learn.users.entities.Bundle;
+import com.learn.users.entities.Section;
 import com.learn.users.entities.User;
 import com.learn.users.enums.GenderType;
 import com.learn.users.repositories.BookRepository;
 import com.learn.users.repositories.BundleRepository;
+import com.learn.users.repositories.SectionRepository;
 import com.learn.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -27,6 +29,9 @@ public class DemoApplication {
 
 	@Autowired
 	BookRepository bookRepository;
+
+	@Autowired
+	SectionRepository sectionRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -90,8 +95,12 @@ public class DemoApplication {
 		book1.setAuthors(Stream.of(user1, user2).collect(Collectors.toSet()));
 		book2.setAuthors(Stream.of(user5, user3).collect(Collectors.toSet()));
 
+		Section section1 = new Section().setName("Introduction").setDescription("Intro to the book");
+		Section section2 = new Section().setName("Preface").setDescription("Preface section of the book");
+
 		bundleRepository.saveAll(Arrays.asList(bundle1, bundle2));
 		userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5));
 		bookRepository.saveAll(Arrays.asList(book1, book2));
+		sectionRepository.saveAll(Arrays.asList(section1, section2));
 	}
 }
