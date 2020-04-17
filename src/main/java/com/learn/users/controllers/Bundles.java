@@ -2,11 +2,10 @@ package com.learn.users.controllers;
 
 import com.learn.users.dto.models.BundleDTO;
 import com.learn.users.services.IBundleService;
-
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import lombok.AllArgsConstructor;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;

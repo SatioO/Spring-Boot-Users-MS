@@ -1,6 +1,5 @@
 package com.learn.users.controllers;
 
-import com.learn.users.dto.models.BookDTO;
 import com.learn.users.dto.models.SectionDTO;
 import com.learn.users.services.ISectionService;
 import lombok.AllArgsConstructor;

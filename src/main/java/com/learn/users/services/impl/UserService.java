@@ -1,6 +1,5 @@
 package com.learn.users.services.impl;
 
-import com.learn.users.dto.mappers.BookMapper;
 import com.learn.users.dto.mappers.BundleMapper;
 import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.BundleDTO;
@@ -10,11 +9,11 @@ import com.learn.users.exceptions.BundleNotFoundException;
 import com.learn.users.exceptions.UserNotFoundException;
 import com.learn.users.repositories.UserRepository;
 import com.learn.users.services.IUserService;
-
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor

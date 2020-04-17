@@ -1,6 +1,6 @@
 package com.learn.users.entities;
 
-import lombok.*;
+import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -34,15 +34,15 @@ public class Book {
 
     @ManyToMany
     @JoinTable(
-        name = "book_authors",
-        joinColumns = { @JoinColumn(name = "book_id") },
-        inverseJoinColumns = {@JoinColumn(name = "user_id")})
+            name = "book_authors",
+            joinColumns = {@JoinColumn(name = "book_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")})
     @Fetch(FetchMode.SUBSELECT)
     private Set<User> authors;
 
     @ManyToMany
     @JoinTable(
-            name= "book_sections",
+            name = "book_sections",
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "section_id")}
     )

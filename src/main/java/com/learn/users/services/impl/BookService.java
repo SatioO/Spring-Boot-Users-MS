@@ -1,24 +1,19 @@
 package com.learn.users.services.impl;
 
 import com.learn.users.dto.mappers.BookMapper;
-import com.learn.users.dto.mappers.OrderMapper;
 import com.learn.users.dto.mappers.SectionMapper;
-import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.BookDTO;
 import com.learn.users.dto.models.SectionDTO;
-import com.learn.users.dto.models.UserDTO;
 import com.learn.users.entities.Book;
 import com.learn.users.exceptions.BookNotFoundException;
 import com.learn.users.repositories.BookRepository;
 import com.learn.users.services.IBookService;
-
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @AllArgsConstructor
 @Service
