@@ -8,5 +8,5 @@ import java.util.List;
 public interface ISectionService {
     List<SectionDTO> getSections();
     SectionDTO getSectionById(Long id);
-    SectionDTO createSection();
+    SectionDTO createSection(SectionDTO section);
 }

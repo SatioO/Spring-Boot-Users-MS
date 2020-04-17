@@ -2,6 +2,7 @@ package com.learn.users.services.impl;
 
 import com.learn.users.dto.mappers.SectionMapper;
 import com.learn.users.dto.models.SectionDTO;
+import com.learn.users.entities.Section;
 import com.learn.users.exceptions.SectionNotFoundException;
 import com.learn.users.repositories.SectionRepository;
 import com.learn.users.services.ISectionService;
@@ -31,7 +32,7 @@ public class SectionService implements ISectionService {
     }
 
     @Override
-    public SectionDTO createSection() {
-        return null;
+    public SectionDTO createSection(SectionDTO section) {
+        return SectionMapper.toSectionDTO(sectionRepository.save(SectionMapper.toSectionEntity(section)));
     }
 }
