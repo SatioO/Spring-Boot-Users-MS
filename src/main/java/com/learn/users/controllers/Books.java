@@ -40,9 +40,10 @@ public class Books {
     }
 
     @PutMapping("/add/{bookId}/sections")
-    public BookDTO attachSections(@PathVariable Long bookId, @RequestBody Map<String, List<SectionDTO>> data) {
-        List<SectionDTO> sections = data.get("sections");
-        BookDTO book = bookService.getBookById(bookId).setSections(sections);
-        return bookService.attachSections(book);
+    public BookDTO attachSections(@PathVariable Long bookId, @RequestBody Map<String, Set<SectionDTO>> data) {
+        Set<SectionDTO> sections = data.get("sections");
+        BookDTO book = bookService.getBookById(bookId);
+
+        return bookService.attachSections(sections, book);
     }
 }

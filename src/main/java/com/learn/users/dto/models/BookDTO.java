@@ -35,5 +35,5 @@ public class BookDTO {
 
     private Set<UserDTO> authors;
 
-    private List<SectionDTO> sections;
+    private Set<SectionDTO> sections;
 }

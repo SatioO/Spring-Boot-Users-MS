@@ -1,6 +1,7 @@
 package com.learn.users.services.impl;
 
 import com.learn.users.dto.mappers.BookMapper;
+import com.learn.users.dto.mappers.OrderMapper;
 import com.learn.users.dto.mappers.SectionMapper;
 import com.learn.users.dto.mappers.UserMapper;
 import com.learn.users.dto.models.BookDTO;
@@ -15,6 +16,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,7 +27,14 @@ public class BookService implements IBookService {
 
     @Override
     public List<BookDTO> getAllBooks() {
-        return bookRepository.findAll().stream().map(BookMapper::toBookDTO).collect(Collectors.toList());
+        return bookRepository.findAll()
+                .stream()
+                .map(book -> BookMapper.toBookDTO(book)
+                        .setSections(book.getSections()
+                                .stream()
+                                .map(SectionMapper::toSectionDTO)
+                                .collect(Collectors.toSet())))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -42,12 +51,15 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public BookDTO attachSections(BookDTO book) {
-        return BookMapper.toBookDTO(bookRepository.save(
-                BookMapper.toBookEntity(book)
-                        .setSections(book.getSections()
-                                .stream()
-                                .map(SectionMapper::toSectionEntity)
-                                .collect(Collectors.toSet()))));
+    public BookDTO attachSections(Set<SectionDTO> sections, BookDTO book) {
+        Book bookEntity = BookMapper
+                .toBookEntity(book)
+                .setSections(sections
+                        .stream()
+                        .map(SectionMapper::toSectionEntity)
+                        .collect(Collectors.toSet())
+                );
+
+        return BookMapper.toBookDTO(bookRepository.save(bookEntity));
     }
 }

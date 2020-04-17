@@ -40,11 +40,11 @@ public class Book {
     @Fetch(FetchMode.SUBSELECT)
     private Set<User> authors;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(
             name= "book_sections",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "section_id")
+            joinColumns = {@JoinColumn(name = "book_id")},
+            inverseJoinColumns = {@JoinColumn(name = "section_id")}
     )
     @Fetch(FetchMode.SUBSELECT)
     private Set<Section> sections;

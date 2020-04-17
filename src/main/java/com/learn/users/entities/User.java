@@ -1,5 +1,6 @@
 package com.learn.users.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.learn.users.enums.GenderType;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -36,7 +37,7 @@ public class User  {
     private List<Order> orders;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "bundleId", nullable = false)
+    @JoinColumn(name = "bundle_id", nullable = false)
     private Bundle bundle;
 
     @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
