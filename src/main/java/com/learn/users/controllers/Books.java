@@ -42,7 +42,6 @@ public class Books {
     public BookDTO attachSections(@PathVariable Long bookId, @RequestBody Map<String, Set<SectionDTO>> data) {
         Set<SectionDTO> sections = data.get("sections");
         BookDTO book = bookService.getBookById(bookId);
-
         return bookService.attachSections(sections, book);
     }
 }
