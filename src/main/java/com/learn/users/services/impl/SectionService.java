@@ -26,7 +26,7 @@ public class SectionService implements ISectionService {
     }
 
     @Override
-    public SectionDTO getSectionById(Long id) {
+    public SectionDTO getSectionById(Long id) throws SectionNotFoundException {
         return SectionMapper.toSectionDTO(sectionRepository.findById(id)
                 .orElseThrow(() -> new SectionNotFoundException("Section not found: " + id)));
     }
